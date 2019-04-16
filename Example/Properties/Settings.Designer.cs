@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Winform_Custom_Controls.Properties
+namespace Example.Properties
 {
 
 
