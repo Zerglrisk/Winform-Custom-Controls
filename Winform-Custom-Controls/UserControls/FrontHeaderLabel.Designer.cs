@@ -1,6 +1,9 @@
-﻿namespace Winform_Custom_Controls.UserControls
+﻿using Winform_Custom_Controls.Inherits;
+using Winform_Custom_Controls.UserControls;
+
+namespace TrueInfoUserControls
 {
-    partial class usrLabelWithDot
+    partial class FrontHeaderLabel
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -29,7 +32,7 @@
         private void InitializeComponent()
         {
             this.label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +51,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.ImageSizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(18, 20);
@@ -57,13 +61,13 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseMove);
             // 
-            // usrLabelWithDot
+            // FrontHeaderLabel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "usrLabelWithDot";
+            this.Name = "FrontHeaderLabel";
             this.Size = new System.Drawing.Size(105, 20);
             this.AutoSizeChanged += new System.EventHandler(this.usrLabelWithDot_AutoSizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -72,7 +76,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private ImageButton pictureBox1;
         private System.Windows.Forms.Label label;
     }
 }
