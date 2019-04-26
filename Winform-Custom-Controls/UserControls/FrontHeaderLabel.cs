@@ -1,17 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Winform_Custom_Controls.UserControls
+namespace TrueInfoUserControls
 {
-    public partial class usrLabelWithDot : UserControl
+    public partial class FrontHeaderLabel : UserControl
     {
 
-        public usrLabelWithDot()
+        public FrontHeaderLabel()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
+            
+
             ImageSizeMode = PictureBoxSizeMode.CenterImage;
             AutoSize = true;
             TextAlign = ContentAlignment.MiddleLeft;
@@ -25,7 +33,7 @@ namespace Winform_Custom_Controls.UserControls
             {
                 if (value != null)
                 {
-                    CheckAutoResize(value.Size);
+                    CheckAutoResize();
                 }
 
                 pictureBox1.Image = value;
@@ -39,7 +47,7 @@ namespace Winform_Custom_Controls.UserControls
             get { return pictureBox1.Size; }
             set
             {
-                CheckAutoResize(value);
+                CheckAutoResize();
                 pictureBox1.Size = value;
             }
         }
@@ -54,7 +62,7 @@ namespace Winform_Custom_Controls.UserControls
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
-        [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [EditorAttribute(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public override string Text
         {
             get { return base.Text; }
@@ -62,7 +70,7 @@ namespace Winform_Custom_Controls.UserControls
             {
                 base.Text = value;//value.Replace("\\n", Environment.NewLine);
                 label.Text = base.Text;
-                CheckAutoResize(pictureBox1.Size);
+                CheckAutoResize();
             }
         }
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -70,8 +78,8 @@ namespace Winform_Custom_Controls.UserControls
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
         public  override Font Font { get { return base.Font; } set { base.Font = value;
-            label.Font = base.Font;
-        } }
+            label.Font = base.Font; CheckAutoResize();
+            } }
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
@@ -90,7 +98,7 @@ namespace Winform_Custom_Controls.UserControls
             get { return _textAlign; }
             set { label.TextAlign = _textAlign = value; }
         }
-        private void CheckAutoResize(Size pictureBoxSize)
+        private void CheckAutoResize()
         {
             //if (!AutoSize)
             //{
@@ -116,16 +124,17 @@ namespace Winform_Custom_Controls.UserControls
             //        : pictureBoxSize.Height;
             //}
             if (!AutoSize) return;
-                this.Width = TextRenderer.MeasureText(label.Text, label.Font).Width + pictureBoxSize.Width;
+            this.Width = TextRenderer.MeasureText(label.Text, label.Font).Width + pictureBox1.Size.Width;
 
-                this.Height = TextRenderer.MeasureText(label.Text, label.Font).Height > pictureBoxSize.Height
+                this.Height = TextRenderer.MeasureText(label.Text, label.Font).Height > pictureBox1.Size.Height
                     ? TextRenderer.MeasureText(label.Text, label.Font).Height
-                    : pictureBoxSize.Height;
+                    : pictureBox1.Size.Height;
+            this.PerformAutoScale();
         }
 
         private void usrLabelWithDot_AutoSizeChanged(object sender, EventArgs e)
         {
-            CheckAutoResize(pictureBox1.Size);
+            CheckAutoResize();
         }
 
         private void ChildControls_MouseDown(object sender, MouseEventArgs e)
@@ -139,5 +148,6 @@ namespace Winform_Custom_Controls.UserControls
             //UserControl 이벤트와 연결
             this.OnMouseMove(e);
         }
+        
     }
 }

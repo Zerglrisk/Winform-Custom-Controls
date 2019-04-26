@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Winform_Custom_Controls</RootNamespace>
     <AssemblyName>Winform-Custom-Controls</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,6 +54,9 @@
     <Compile Include="Inherits\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Inherits\TextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Inherits\usrButtonTest.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -62,17 +66,8 @@
     <Compile Include="Inherits\GradientPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\ThreeWayCheckBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ThreeWayCheckBox.designer.cs">
-      <DependentUpon>ThreeWayCheckBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\usrLabelWithDot.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\usrLabelWithDot.designer.cs">
-      <DependentUpon>usrLabelWithDot.cs</DependentUpon>
+    <Compile Include="Inherits\ImageButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Inherits\Separator.cs">
       <SubType>Component</SubType>
@@ -90,12 +85,6 @@
       <DependentUpon>TabButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\ImageButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ImageButton.designer.cs">
-      <DependentUpon>ImageButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\ColorizeButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,28 +97,31 @@
     <Compile Include="UserControls\TextCheckBox.designer.cs">
       <DependentUpon>TextCheckBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\FrontHeaderLabel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FrontHeaderLabel.Designer.cs">
+      <DependentUpon>FrontHeaderLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherits\ThreeWayCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UserControls\ThreeWayCheckBox.resx">
-      <DependentUpon>ThreeWayCheckBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\usrLabelWithDot.resx">
-      <DependentUpon>usrLabelWithDot.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ImageTabButton.resx">
       <DependentUpon>ImageTabButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TabButton.resx">
       <DependentUpon>TabButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ImageButton.resx">
-      <DependentUpon>ImageButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ColorizeButton.resx">
       <DependentUpon>ColorizeButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TextCheckBox.resx">
       <DependentUpon>TextCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FrontHeaderLabel.resx">
+      <DependentUpon>FrontHeaderLabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

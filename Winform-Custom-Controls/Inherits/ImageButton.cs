@@ -3,34 +3,23 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Winform_Custom_Controls.UserControls
+namespace Winform_Custom_Controls.Inherits
 {
-    [DefaultEvent("BtnClick")]
-    public partial class ImageButton : UserControl
+    public class ImageButton : PictureBox
     {
         public ImageButton()
         {
-            InitializeComponent();
+            this.DoubleBuffered = true;
 
             ImageSizeMode = PictureBoxSizeMode.StretchImage;
-            
+            InvertImageOnDisabled = false;
         }
-
-        //외부이벤트 발생용
-        /// <summary>
-        /// 버튼이벤트 처리로 조회시작
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public delegate void BtnClickEventHandler(object sender, EventArgs e);
-        public event BtnClickEventHandler BtnClick;
-
         private bool _invertImageOnDisabled;
 
         [Category("ButtonAppearance"), DefaultValue(false)]
         public bool InvertImageOnDisabled
         {
-            get { return _invertImageOnDisabled;}
+            get { return _invertImageOnDisabled; }
             set
             {
                 _invertImageOnDisabled = value;
@@ -39,7 +28,7 @@ namespace Winform_Custom_Controls.UserControls
         }
 
         private Image _hoverimage;
-        [Category("ButtonAppearance"),DefaultValue(typeof(Image),null)]
+        [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
         public Image HoverImage
         {
             get
@@ -55,8 +44,8 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(PictureBoxSizeMode), "StretchImage")]
         public PictureBoxSizeMode ImageSizeMode
         {
-            get { return picButton.SizeMode; }
-            set { picButton.SizeMode = value; }
+            get { return base.SizeMode; }
+            set { base.SizeMode = value; }
         }
 
         private Image _baseimage;
@@ -88,6 +77,11 @@ namespace Winform_Custom_Controls.UserControls
             }
         }
 
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+        }
+
         private Image _disabledimage;
         [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
         public Image DisabledImage
@@ -99,83 +93,62 @@ namespace Winform_Custom_Controls.UserControls
             set
             {
                 _disabledimage = value;
-                if(_disabledimage != null)
+                if (_disabledimage != null)
                     BaseImage_Changed();
             }
         }
-        
         private void BaseImage_Changed()
         {
-            picButton.Image = this.Enabled ? BaseImage : this.InvertImageOnDisabled ? GetInvertImage(BaseImage) : DisabledImage;
+            this.Image = this.Enabled ? BaseImage : this.InvertImageOnDisabled ? GetInvertImage(BaseImage) : DisabledImage;
         }
 
-        private void picButton_Click(object sender, EventArgs e)
+        protected override void OnEnabledChanged(EventArgs e)
         {
-            if (!this.Enabled)
-                return;
-
-            BtnClick?.Invoke(sender, e);
-        }
-        
-
-        private void usrButton_EnabledChanged(object sender, EventArgs e)
-        {
-            picButton.Image = this.Enabled ? BaseImage : this.InvertImageOnDisabled ? GetInvertImage(BaseImage): DisabledImage;
+            base.OnEnabledChanged(e);
+            this.Image = this.Enabled ? BaseImage : this.InvertImageOnDisabled ? GetInvertImage(BaseImage) : DisabledImage;
         }
 
-        private void picButton_MouseHover(object sender, EventArgs e)
+        protected override void OnMouseEnter(EventArgs e)
         {
+            base.OnMouseEnter(e);
             if (this.Enabled && HoverImage != null)
             {
-                picButton.Image = HoverImage;
+                this.Image = HoverImage;
             }
-
-            //this.BorderStyle = BorderStyle.FixedSingle;
         }
 
-        private void picButton_MouseLeave(object sender, EventArgs e)
+        protected override void OnMouseLeave(EventArgs e)
         {
-            if (this.Enabled && HoverImage != null)
+            base.OnMouseLeave(e);
+            if (this.Enabled)
             {
-                picButton.Image = BaseImage;
+                this.Image = BaseImage;
             }
-
-            //this.BorderStyle = BorderStyle.None;
         }
 
-        private void picButton_MouseDown(object sender, MouseEventArgs e)
+        protected override void OnMouseDown(MouseEventArgs e)
         {
+            base.OnMouseDown(e);
             if (this.Enabled && MouseDownImage != null)
             {
-                picButton.Image = MouseDownImage;
+                this.Image = MouseDownImage;
             }
-
-
-            //UserControl 이벤트와 연결
-            //MouseDown을 에 창 드래그를 넣으면 Click은 작동하지 않습니다. 
-            this.OnMouseDown(e);
         }
-
-        private void picButton_MouseUp(object sender, MouseEventArgs e)
+        protected override void OnMouseUp(MouseEventArgs e)
         {
-            if (this.Enabled && MouseDownImage != null)
+            base.OnMouseUp(e);
+            if (this.Enabled)
             {
-                picButton.Image = BaseImage;
+                this.Image = BaseImage;
             }
-        }
-
-        private void picButton_MouseMove(object sender, MouseEventArgs e)
-        {
-            //UserControl 이벤트와 연결
-            this.OnMouseMove(e);
         }
 
         /// <summary>
-        /// 
+        /// Invert the Image
         /// </summary>
         /// <param name="image"></param>
         /// <see href="https://stackoverflow.com/a/33024899/6485333"/>
-        /// <returns></returns>
+        /// <returns>A inverted <code>Image</code>.</returns>
         private Image GetInvertImage(Image image)
         {
             if (image == null) return null;
