@@ -113,11 +113,23 @@ namespace Winform_Custom_Controls.Inherits
                 height = ((this.Height - TextRenderer.MeasureText(this.Text, this.Font).Height) / 2);
             }
 
-
-            using (var b = new SolidBrush(ForeColor))
+            if (this.Focused)
             {
-                //Drawing the datetime text
-                e.Graphics.DrawString(this.Text, this.Font, b, 0, height);
+                e.Graphics.FillRectangle(SystemBrushes.Highlight,
+                    new Rectangle(4, 4, this.ClientSize.Width - SystemInformation.VerticalScrollBarWidth - 8,
+                        this.ClientSize.Height - 8));
+                using (var b = new SolidBrush(SystemColors.HighlightText))
+                {
+                    e.Graphics.DrawString(this.Text, this.Font, b, 0, height);
+                }
+            }
+            else
+            {
+                using (var b = new SolidBrush(ForeColor))
+                {
+                    //Drawing the datetime text
+                    e.Graphics.DrawString(this.Text, this.Font, b, 0, height);
+                }
             }
 
             //Drawing the dropdownbutton using ComboBoxRenderer
@@ -134,6 +146,8 @@ namespace Winform_Custom_Controls.Inherits
             }
 
             bkgBrush.Dispose();
+
+            base.OnPaint(e);
         }
 
         protected override void OnMouseEnter(EventArgs e)

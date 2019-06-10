@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inherits\BorderComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Inherits\CTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
