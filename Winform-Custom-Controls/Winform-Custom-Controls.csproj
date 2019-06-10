@@ -48,6 +48,9 @@
     <Compile Include="Inherits\BorderComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Inherits\ColorizeButtonTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Inherits\CTextBox.cs">
       <SubType>Component</SubType>
     </Compile>

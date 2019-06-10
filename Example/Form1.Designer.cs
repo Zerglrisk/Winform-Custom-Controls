@@ -34,8 +34,19 @@ namespace Example
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButtonTest();
+            this.textBox8 = new Winform_Custom_Controls.Inherits.TextBox();
+            this.textBox7 = new Winform_Custom_Controls.Inherits.TextBox();
+            this.textBox6 = new Winform_Custom_Controls.Inherits.TextBox();
+            this.textBox5 = new Winform_Custom_Controls.Inherits.TextBox();
             this.dateTimePicker1 = new Winform_Custom_Controls.Inherits.DateTimePicker();
             this.tabButton1 = new Winform_Custom_Controls.UserControls.TabButton();
+            this.imageTabButton1 = new Winform_Custom_Controls.UserControls.ImageTabButton();
             this.imageButton1 = new Winform_Custom_Controls.Inherits.ImageButton();
             this.colorizeButton1 = new Winform_Custom_Controls.UserControls.ColorizeButton();
             this.usrButtonTest1 = new Winform_Custom_Controls.Inherits.usrButtonTest();
@@ -44,15 +55,6 @@ namespace Example
             this.textBox2 = new Winform_Custom_Controls.Inherits.TextBox();
             this.threeWayCheckBox1 = new Winform_Custom_Controls.UserControls.ThreeWayCheckBox();
             this._textCheckBox1 = new Winform_Custom_Controls.UserControls.TextCheckBox();
-            this.imageTabButton1 = new Winform_Custom_Controls.UserControls.ImageTabButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox5 = new Winform_Custom_Controls.Inherits.TextBox();
-            this.textBox6 = new Winform_Custom_Controls.Inherits.TextBox();
-            this.textBox7 = new Winform_Custom_Controls.Inherits.TextBox();
-            this.textBox8 = new Winform_Custom_Controls.Inherits.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,6 +91,109 @@ namespace Example
             this.dateTimePicker2.Size = new System.Drawing.Size(201, 21);
             this.dateTimePicker2.TabIndex = 14;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(115, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 12);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Default TextBox";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(117, 59);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(100, 21);
+            this.textBox3.TabIndex = 16;
+            this.textBox3.Text = "Readonly";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Enabled = false;
+            this.textBox4.Location = new System.Drawing.Point(117, 86);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 21);
+            this.textBox4.TabIndex = 17;
+            this.textBox4.Text = "Disabled";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(115, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 12);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Customize TextBox";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(240, 248);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(126, 23);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // colorizeButtonTest1
+            // 
+            this.colorizeButtonTest1.BorderFocusColor = System.Drawing.Color.Red;
+            this.colorizeButtonTest1.BorderFocusSize = new System.Windows.Forms.Padding(4);
+            this.colorizeButtonTest1.BorderSize = new System.Windows.Forms.Padding(4);
+            this.colorizeButtonTest1.Location = new System.Drawing.Point(240, 219);
+            this.colorizeButtonTest1.Name = "colorizeButtonTest1";
+            this.colorizeButtonTest1.Size = new System.Drawing.Size(126, 23);
+            this.colorizeButtonTest1.TabIndex = 23;
+            this.colorizeButtonTest1.Text = "colorizeButtonTest1";
+            this.colorizeButtonTest1.UseVisualStyleBackColor = true;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox8.BackDisabledColor = System.Drawing.Color.MistyRose;
+            this.textBox8.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox8.Enabled = false;
+            this.textBox8.Location = new System.Drawing.Point(117, 236);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(100, 21);
+            this.textBox8.TabIndex = 22;
+            this.textBox8.Text = "Disabled 2";
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.MistyRose;
+            this.textBox7.BackReadOnlyColor = System.Drawing.Color.MistyRose;
+            this.textBox7.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox7.Location = new System.Drawing.Point(117, 182);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(100, 21);
+            this.textBox7.TabIndex = 21;
+            this.textBox7.Text = "Readonly 2";
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox6.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox6.Enabled = false;
+            this.textBox6.Location = new System.Drawing.Point(117, 209);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 21);
+            this.textBox6.TabIndex = 20;
+            this.textBox6.Text = "Disabled";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox5.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox5.Location = new System.Drawing.Point(117, 155);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 21);
+            this.textBox5.TabIndex = 19;
+            this.textBox5.Text = "Readonly";
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(481, 28);
@@ -108,6 +213,20 @@ namespace Example
             this.tabButton1.Size = new System.Drawing.Size(100, 50);
             this.tabButton1.TabIndex = 12;
             this.tabButton1.Text = "tabButton1";
+            // 
+            // imageTabButton1
+            // 
+            this.imageTabButton1.BackColor = System.Drawing.Color.Transparent;
+            this.imageTabButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imageTabButton1.BaseImage = null;
+            this.imageTabButton1.CheckImage = null;
+            this.imageTabButton1.Location = new System.Drawing.Point(492, 235);
+            this.imageTabButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.imageTabButton1.Name = "imageTabButton1";
+            this.imageTabButton1.Selected = false;
+            this.imageTabButton1.Size = new System.Drawing.Size(100, 50);
+            this.imageTabButton1.TabIndex = 11;
+            this.imageTabButton1.Title = "";
             // 
             // imageButton1
             // 
@@ -201,107 +320,13 @@ namespace Example
             this._textCheckBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this._textCheckBox1.TrueText = "Yes";
             // 
-            // imageTabButton1
-            // 
-            this.imageTabButton1.BackColor = System.Drawing.Color.Transparent;
-            this.imageTabButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.imageTabButton1.BaseImage = null;
-            this.imageTabButton1.CheckImage = null;
-            this.imageTabButton1.Location = new System.Drawing.Point(492, 235);
-            this.imageTabButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.imageTabButton1.Name = "imageTabButton1";
-            this.imageTabButton1.Selected = false;
-            this.imageTabButton1.Size = new System.Drawing.Size(100, 50);
-            this.imageTabButton1.TabIndex = 11;
-            this.imageTabButton1.Title = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(115, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 12);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Default TextBox";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(117, 59);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 16;
-            this.textBox3.Text = "Readonly";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(117, 86);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 17;
-            this.textBox4.Text = "Disabled";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 12);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Customize TextBox";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox5.Location = new System.Drawing.Point(117, 155);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 19;
-            this.textBox5.Text = "Readonly";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox6.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(117, 209);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 20;
-            this.textBox6.Text = "Disabled";
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox7.BackReadOnlyColor = System.Drawing.Color.MistyRose;
-            this.textBox7.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox7.Location = new System.Drawing.Point(117, 182);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(100, 21);
-            this.textBox7.TabIndex = 21;
-            this.textBox7.Text = "Readonly 2";
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox8.BackDisabledColor = System.Drawing.Color.MistyRose;
-            this.textBox8.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(117, 236);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 21);
-            this.textBox8.TabIndex = 22;
-            this.textBox8.Text = "Disabled 2";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.colorizeButtonTest1);
             this.Controls.Add(this.textBox8);
             this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
@@ -358,6 +383,8 @@ namespace Example
         private TextBox textBox6;
         private TextBox textBox7;
         private TextBox textBox8;
+        private ColorizeButtonTest colorizeButtonTest1;
+        private System.Windows.Forms.Button button2;
     }
 }
 
