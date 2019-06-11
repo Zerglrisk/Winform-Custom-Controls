@@ -8,7 +8,6 @@ namespace Winform_Custom_Controls.UserControls
     [DefaultEvent("BtnClick")]
     public partial class ColorizeButton : UserControl
     {
-        private bool isMouseEnter;
         public new bool Focused;
 
         public ColorizeButton()
@@ -24,7 +23,6 @@ namespace Winform_Custom_Controls.UserControls
             BorderMouseDownColor = ColorTranslator.FromHtml("#005499");
             BorderFocusColor = ColorTranslator.FromHtml("#0078D7");
             BorderFocusSize = new Padding(2);
-            isMouseEnter = false;
             Focused = false;
 
             label1.Parent = btnColor;
@@ -61,8 +59,11 @@ namespace Winform_Custom_Controls.UserControls
             }
             set
             {
-                _backcolor = value;
-                btnColor.BackColor = value;
+                if (value == Color.Empty)
+                {
+                    throw new ArgumentNullException("Color.Empty","BackColor Cannot Be Empty");
+                }
+                btnColor.BackColor = _backcolor = value;
             }
         }
 
@@ -96,7 +97,14 @@ namespace Winform_Custom_Controls.UserControls
         public Color BorderColor
         {
             get { return _borderColor; }
-            set { border.BackColor = _borderColor = value; }
+            set
+            {
+                if (value == Color.Empty)
+                {
+                    throw new ArgumentNullException("Color.Empty", "BorderColor Cannot Be Empty");
+                }
+                border.BackColor = _borderColor = value;
+            }
         }
 
         [Category("Border Color"),
@@ -186,7 +194,7 @@ namespace Winform_Custom_Controls.UserControls
 
         private void btnColor_MouseLeave(object sender, EventArgs e)
         {
-            if (this.Enabled && !HoverColor.IsEmpty)
+            if (this.Enabled)
             {
                 btnColor.BackColor = BackColor;
             }
@@ -194,12 +202,11 @@ namespace Winform_Custom_Controls.UserControls
             if (this.Enabled)
             {
                 
-                border.BackColor = !this.Focused ? BorderColor : BorderFocusColor;
+                border.BackColor = !this.Focused ? BorderColor : !BorderFocusColor.IsEmpty ? BorderFocusColor : BorderColor; ;
                 //this.Padding = !this.Focused ? BorderSize : BorderFocusSize;
             }
             
 
-            isMouseEnter = false;
             //this.label1.Font = new Font(this.label1.Font.FontFamily, label1.Font.Size);
         }
 
@@ -210,22 +217,21 @@ namespace Winform_Custom_Controls.UserControls
 
         private void btnColor_MouseEnter(object sender, EventArgs e)
         {
-            if (this.Enabled && !HoverColor.IsEmpty)
+            if (this.Enabled)
             {
-                border.BackColor = BorderHoverColor;
-                btnColor.BackColor = HoverColor;
+                border.BackColor = !BorderHoverColor.IsEmpty ? BorderHoverColor : border.BackColor; ;
+                btnColor.BackColor = !HoverColor.IsEmpty ? HoverColor : btnColor.BackColor;
             }
 
-            isMouseEnter = true;
             //this.label1.Font = new Font(this.label1.Font.FontFamily, label1.Font.Size, FontStyle.Italic);
         }
 
         private void btnColor_MouseDown(object sender, MouseEventArgs e)
         {
-            if (this.Enabled && !MouseDownColor.IsEmpty)
+            if (this.Enabled)
             {
-                btnColor.BackColor = MouseDownColor;
-                border.BackColor = BorderMouseDownColor;
+                btnColor.BackColor = !MouseDownColor.IsEmpty ? MouseDownColor : btnColor.BackColor; ;
+                border.BackColor = !BorderMouseDownColor.IsEmpty ? BorderMouseDownColor : btnColor.BackColor;
             }
         }
 
@@ -233,8 +239,8 @@ namespace Winform_Custom_Controls.UserControls
         {
             if (this.Enabled)
             {
-                btnColor.BackColor = isMouseEnter ? HoverColor : BackColor;
-                border.BackColor = isMouseEnter ? BorderHoverColor : BorderColor;
+                btnColor.BackColor = !HoverColor.IsEmpty ? HoverColor : btnColor.BackColor;
+                border.BackColor = !BorderHoverColor.IsEmpty ? BorderHoverColor : border.BackColor;
             }
 
             //Focused = true;

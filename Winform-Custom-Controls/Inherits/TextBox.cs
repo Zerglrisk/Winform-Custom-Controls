@@ -5,8 +5,10 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Winform_Custom_Controls.enums;
 
 namespace Winform_Custom_Controls.Inherits
 {
@@ -33,6 +35,7 @@ namespace Winform_Custom_Controls.Inherits
             _drawColor = BackColor = BackDefaultColor;
             EnableBorderFocusColor = true;
             AutoSize = false;
+            TextMode = TextMode.Text;
             //this.BorderStyle = BorderStyle.FixedSingle;
         }
         //[Category("Appearance"),
@@ -45,7 +48,7 @@ namespace Winform_Custom_Controls.Inherits
         //    { return base.BorderStyle; }
         //    set { base.BorderStyle = value; }
         //}
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Browsable(true)]
         public override bool AutoSize
         {
@@ -102,6 +105,8 @@ namespace Winform_Custom_Controls.Inherits
 
         [Category("Behavior"), Description("Usable BorderFocusColor"), DefaultValue(true), Browsable(true)]
         public bool EnableBorderFocusColor { get; set; }
+        [Category("Behavior"),Description("Text Mode"),DefaultValue(typeof(TextMode),"Text"),Browsable(true)]
+        public TextMode TextMode { get; set; }
 
         protected override void WndProc(ref Message m)
         {
@@ -166,6 +171,42 @@ namespace Winform_Custom_Controls.Inherits
         {
             base.OnResize(e);
             Invalidate();
+        }
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            base.OnKeyPress(e);
+            if (TextMode == TextMode.Number)
+            {
+                // Reference : https://stackoverflow.com/questions/463299/how-do-i-make-a-textbox-that-only-accepts-numbers
+                // Reference : https://ourcodeworld.com/articles/read/507/how-to-allow-only-numbers-inside-a-textbox-in-winforms-c-sharp
+                // Verify that the pressed key isn't CTRL or any non-numeric digit
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+
+                // If you want, you can allow decimal (float) numbers
+                if ((e.KeyChar == '.') && ((this).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+            }else if (TextMode == TextMode.Currency)
+            {
+                // Verify that the pressed key isn't CTRL or any non-numeric digit
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+                {
+                    e.Handled = true;
+                }
+
+                // If you want, you can allow decimal (float) numbers
+                if ((e.KeyChar == '.') && ((this).Text.IndexOf('.') > -1))
+                {
+                    e.Handled = true;
+                }
+                //소수점 안적히는 오류 수정하기
+                this.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:#,##.##}", double.Parse(Regex.Replace(!string.IsNullOrEmpty(this.Text) ? this.Text : "0", @"[^\d]", string.Empty)));
+            }
         }
     }
 }
