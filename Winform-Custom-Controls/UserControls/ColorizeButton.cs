@@ -61,7 +61,8 @@ namespace Winform_Custom_Controls.UserControls
             {
                 if (value == Color.Empty)
                 {
-                    throw new ArgumentNullException("Color.Empty","BackColor Cannot Be Empty");
+                    btnColor.BackColor = _backcolor = SystemColors.ControlLight;
+                    //throw new ArgumentNullException("Color.Empty","BackColor Cannot Be Empty");
                 }
                 btnColor.BackColor = _backcolor = value;
             }
@@ -101,7 +102,8 @@ namespace Winform_Custom_Controls.UserControls
             {
                 if (value == Color.Empty)
                 {
-                    throw new ArgumentNullException("Color.Empty", "BorderColor Cannot Be Empty");
+                    border.BackColor = _borderColor = SystemColors.ButtonShadow;
+                    //throw new ArgumentNullException("Color.Empty", "BorderColor Cannot Be Empty");
                 }
                 border.BackColor = _borderColor = value;
             }
