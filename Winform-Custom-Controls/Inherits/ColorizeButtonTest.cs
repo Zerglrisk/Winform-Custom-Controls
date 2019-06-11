@@ -27,10 +27,10 @@ namespace Winform_Custom_Controls.Inherits
             BackDisabledColor = ColorTranslator.FromHtml("#CCCCCC");
 
             CurrentBorderColor = BorderColor = SystemColors.ButtonShadow;
-            BorderHoverColor = SystemColors.Highlight;
+            BorderFocusColor = SystemColors.Highlight;
             BorderMouseDownColor = ColorTranslator.FromHtml("#005499");
             BorderDisabledColor = ColorTranslator.FromHtml("#BFBFBF");
-            BorderFocusColor = Color.Black;
+            BorderFocusCuesColor = Color.Black;
             BorderFocusSize = new Padding(2);
 
             ForeDisabledColor = SystemColors.ButtonShadow;
@@ -99,7 +99,7 @@ namespace Winform_Custom_Controls.Inherits
          Description("This focus color is FocusCues color. When FocusCues is True, will can see dotted line with you specified color.")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "Black")]
-        public Color BorderFocusColor { get; set; }
+        public Color BorderFocusCuesColor { get; set; }
         [Category("Border Color"),
          Description("")]
         [Browsable(true)]
@@ -109,7 +109,7 @@ namespace Winform_Custom_Controls.Inherits
          Description("")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "Highlight")]
-        public Color BorderHoverColor { get; set; }
+        public Color BorderFocusColor { get; set; }
 
         [Category("Border Color"),
          Description("")]
@@ -165,9 +165,9 @@ namespace Winform_Custom_Controls.Inherits
                 CurrentBackColor = BackHoverColor;
             }
 
-            if (this.Enabled && !BorderHoverColor.IsEmpty)
+            if (this.Enabled && !BorderFocusColor.IsEmpty)
             {
-                CurrentBorderColor = BorderHoverColor;
+                CurrentBorderColor = BorderFocusColor;
             }
 
             isMouseEnter = true;
@@ -184,7 +184,7 @@ namespace Winform_Custom_Controls.Inherits
 
             if (this.Enabled)
             {
-                CurrentBorderColor = !this.Focused ? BorderColor : BorderHoverColor;
+                CurrentBorderColor = !this.Focused ? BorderColor : BorderFocusColor;
             }
 
             isMouseEnter = false;
@@ -213,7 +213,7 @@ namespace Winform_Custom_Controls.Inherits
             if (this.Enabled)
             {
                 CurrentBackColor = isMouseEnter ? BackHoverColor : BackColor;
-                CurrentBorderColor = isMouseEnter ? BorderHoverColor : BorderColor;
+                CurrentBorderColor = isMouseEnter ? BorderFocusColor : BorderColor;
             }
 
 
@@ -248,7 +248,7 @@ namespace Winform_Custom_Controls.Inherits
             {
 
                 //단순히 탭눌러서 포커스(선택)하면 보더가 회색임. 마우스 클릭해서 포커스(선택)하면 보더가 하이라이트인 현상 수정
-                CurrentBorderColor = BorderHoverColor;
+                CurrentBorderColor = BorderFocusColor;
             }
         }
 
@@ -307,13 +307,13 @@ namespace Winform_Custom_Controls.Inherits
             {
                 if (!isMouseEnter)
                 {
-                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderHoverColor, ButtonBorderStyle.Solid);
+                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderFocusColor, ButtonBorderStyle.Solid);
                 }
 
                 if (/*parentShowFocusCues &&*/ this.ShowFocusCues)
                 {
 
-                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(2, 2, Width - 4, Height - 4), BorderFocusColor, ButtonBorderStyle.Dotted);
+                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(2, 2, Width - 4, Height - 4), BorderFocusCuesColor, ButtonBorderStyle.Dotted);
                 }
             }
 

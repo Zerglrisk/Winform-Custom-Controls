@@ -39,6 +39,8 @@ namespace Example
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.textBox10 = new Winform_Custom_Controls.Inherits.TextBox();
+            this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
             this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButtonTest();
             this.textBox8 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox7 = new Winform_Custom_Controls.Inherits.TextBox();
@@ -136,9 +138,29 @@ namespace Example
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox10.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox10.Location = new System.Drawing.Point(117, 318);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(100, 21);
+            this.textBox10.TabIndex = 26;
+            this.textBox10.TextMode = Winform_Custom_Controls.enums.TextMode.Currency;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox9.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox9.Location = new System.Drawing.Point(117, 155);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(100, 21);
+            this.textBox9.TabIndex = 25;
+            this.textBox9.TextMode = Winform_Custom_Controls.enums.TextMode.Number;
+            // 
             // colorizeButtonTest1
             // 
-            this.colorizeButtonTest1.BorderFocusColor = System.Drawing.Color.Red;
+            this.colorizeButtonTest1.BorderFocusCuesColor = System.Drawing.Color.Red;
             this.colorizeButtonTest1.BorderFocusSize = new System.Windows.Forms.Padding(4);
             this.colorizeButtonTest1.BorderSize = new System.Windows.Forms.Padding(4);
             this.colorizeButtonTest1.Location = new System.Drawing.Point(240, 219);
@@ -154,7 +176,7 @@ namespace Example
             this.textBox8.BackDisabledColor = System.Drawing.Color.MistyRose;
             this.textBox8.BorderFocusColor = System.Drawing.Color.Maroon;
             this.textBox8.Enabled = false;
-            this.textBox8.Location = new System.Drawing.Point(117, 236);
+            this.textBox8.Location = new System.Drawing.Point(117, 263);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(100, 21);
             this.textBox8.TabIndex = 22;
@@ -165,7 +187,7 @@ namespace Example
             this.textBox7.BackColor = System.Drawing.Color.MistyRose;
             this.textBox7.BackReadOnlyColor = System.Drawing.Color.MistyRose;
             this.textBox7.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox7.Location = new System.Drawing.Point(117, 182);
+            this.textBox7.Location = new System.Drawing.Point(117, 209);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(100, 21);
@@ -177,7 +199,7 @@ namespace Example
             this.textBox6.BackColor = System.Drawing.SystemColors.Window;
             this.textBox6.BorderFocusColor = System.Drawing.Color.Maroon;
             this.textBox6.Enabled = false;
-            this.textBox6.Location = new System.Drawing.Point(117, 209);
+            this.textBox6.Location = new System.Drawing.Point(117, 236);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 21);
             this.textBox6.TabIndex = 20;
@@ -187,7 +209,7 @@ namespace Example
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.Control;
             this.textBox5.BorderFocusColor = System.Drawing.Color.Maroon;
-            this.textBox5.Location = new System.Drawing.Point(117, 155);
+            this.textBox5.Location = new System.Drawing.Point(117, 182);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(100, 21);
@@ -273,7 +295,7 @@ namespace Example
             // 
             this.cTextBox1.BackColor = System.Drawing.SystemColors.Window;
             this.cTextBox1.BorderFocusColor = System.Drawing.SystemColors.Highlight;
-            this.cTextBox1.Location = new System.Drawing.Point(117, 264);
+            this.cTextBox1.Location = new System.Drawing.Point(117, 291);
             this.cTextBox1.Name = "cTextBox1";
             this.cTextBox1.Size = new System.Drawing.Size(100, 21);
             this.cTextBox1.TabIndex = 5;
@@ -325,6 +347,8 @@ namespace Example
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.colorizeButtonTest1);
             this.Controls.Add(this.textBox8);
@@ -385,6 +409,8 @@ namespace Example
         private TextBox textBox8;
         private ColorizeButtonTest colorizeButtonTest1;
         private System.Windows.Forms.Button button2;
+        private TextBox textBox9;
+        private TextBox textBox10;
     }
 }
 
