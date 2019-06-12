@@ -19,7 +19,7 @@ namespace Winform_Custom_Controls.UserControls
             BackColor = SystemColors.ControlLight;
             HoverColor = ColorTranslator.FromHtml("#E5F1FB");
             MouseDownColor = ColorTranslator.FromHtml("#CCE4F7");
-            BackDisabledColor = ColorTranslator.FromHtml("#cccccc");
+            BackDisabledColor = ColorTranslator.FromHtml("#CCCCCC");
             BorderHoverColor = SystemColors.MenuHighlight;
             BorderMouseDownColor = ColorTranslator.FromHtml("#005499");
             BorderFocusColor = ColorTranslator.FromHtml("#0078D7");
@@ -28,7 +28,6 @@ namespace Winform_Custom_Controls.UserControls
             ForeHoverColor = SystemColors.ControlText;
             ForeMouseDownColor = SystemColors.ControlText;
             ForeDisabledColor = SystemColors.GrayText;
-            Focused = false;
 
             label1.Parent = btnColor;
             label1.BringToFront();
@@ -115,11 +114,19 @@ namespace Winform_Custom_Controls.UserControls
             {
                 if (value == Color.Empty)
                 {
+                    if (_foreColor == ForeHoverColor)
+                        ForeHoverColor = SystemColors.ControlText;
+                    if (_foreColor == ForeMouseDownColor)
+                        ForeMouseDownColor = SystemColors.ControlText;
                     label1.ForeColor = _foreColor = SystemColors.ControlText;
                     //throw new ArgumentNullException("Color.Empty","BackColor Cannot Be Empty");
                 }
                 else
                 {
+                    if (_foreColor == ForeHoverColor)
+                        ForeHoverColor = value;
+                    if (_foreColor == ForeMouseDownColor)
+                        ForeMouseDownColor = value;
                     label1.ForeColor = _foreColor = value;
                 }
                 
@@ -162,13 +169,13 @@ namespace Winform_Custom_Controls.UserControls
         }
 
         [Category("Border Color"),
-         Description("The background color of the component when disabled")]
+         Description("The border color of the component when hover")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "MenuHighlight")]
         public Color BorderHoverColor { get; set; }
 
         [Category("Border Color"),
-         Description("The background color of the component when disabled")]
+         Description("The border color of the component when mouse down")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "0, 84, 153")]
         public Color BorderMouseDownColor { get; set; }
@@ -186,12 +193,12 @@ namespace Winform_Custom_Controls.UserControls
             }
         }
         [Category("Border Color"),
-         Description("The background color of the component when disabled")]
-        [Browsable(true)]
+         Description("")]
+        [Browsable(false)]
         [DefaultValue(typeof(Color), "0, 120, 215")]
         public Color BorderFocusColor { get; set; }
 
-        [Category("Border Color")]
+        [Category("Border Color"), Browsable(false)]
         [DefaultValue(typeof(Padding), "2,2,2,2")]
         public Padding BorderFocusSize { get; set; }
 
@@ -235,7 +242,6 @@ namespace Winform_Custom_Controls.UserControls
             {
                 btnColor.BackColor = BackDisabledColor;
                 label1.ForeColor = ForeDisabledColor;
-                btnColor.ForeColor = ForeDisabledColor;
             }
         }
 
@@ -252,7 +258,6 @@ namespace Winform_Custom_Controls.UserControls
         {
             if (this.Enabled)
             {
-
                 btnColor.BackColor = BackColor;
                 border.BackColor = !this.Focused ? BorderColor : !BorderFocusColor.IsEmpty ? BorderFocusColor : BorderColor;
                 label1.ForeColor = ForeColor;
