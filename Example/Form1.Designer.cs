@@ -39,6 +39,9 @@ namespace Example
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.colorizeButton3 = new Winform_Custom_Controls.UserControls.ColorizeButton();
+            this.colorizeButton2 = new Winform_Custom_Controls.UserControls.ColorizeButton();
             this.textBox10 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
             this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButtonTest();
@@ -137,6 +140,42 @@ namespace Example
             this.button2.TabIndex = 24;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(492, 209);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 29;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // colorizeButton3
+            // 
+            this.colorizeButton3.Enabled = false;
+            this.colorizeButton3.ForeDisabledColor = System.Drawing.Color.Yellow;
+            this.colorizeButton3.ForeHoverColor = System.Drawing.Color.Red;
+            this.colorizeButton3.ForeMouseDownColor = System.Drawing.Color.Blue;
+            this.colorizeButton3.Location = new System.Drawing.Point(492, 182);
+            this.colorizeButton3.Margin = new System.Windows.Forms.Padding(0);
+            this.colorizeButton3.Name = "colorizeButton3";
+            this.colorizeButton3.Size = new System.Drawing.Size(100, 21);
+            this.colorizeButton3.TabIndex = 28;
+            this.colorizeButton3.Text = "colorizeButton3";
+            // 
+            // colorizeButton2
+            // 
+            this.colorizeButton2.BackDisabledColor = System.Drawing.Color.Empty;
+            this.colorizeButton2.ForeDisabledColor = System.Drawing.Color.Yellow;
+            this.colorizeButton2.ForeHoverColor = System.Drawing.Color.Red;
+            this.colorizeButton2.ForeMouseDownColor = System.Drawing.Color.Blue;
+            this.colorizeButton2.Location = new System.Drawing.Point(492, 142);
+            this.colorizeButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.colorizeButton2.Name = "colorizeButton2";
+            this.colorizeButton2.Size = new System.Drawing.Size(100, 21);
+            this.colorizeButton2.TabIndex = 27;
+            this.colorizeButton2.Text = "colorizeButton2";
             // 
             // textBox10
             // 
@@ -262,6 +301,7 @@ namespace Example
             // colorizeButton1
             // 
             this.colorizeButton1.BackDisabledColor = System.Drawing.Color.Empty;
+            this.colorizeButton1.ForeMouseDownColor = System.Drawing.Color.Empty;
             this.colorizeButton1.Location = new System.Drawing.Point(240, 60);
             this.colorizeButton1.Margin = new System.Windows.Forms.Padding(0);
             this.colorizeButton1.Name = "colorizeButton1";
@@ -347,6 +387,9 @@ namespace Example
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.colorizeButton3);
+            this.Controls.Add(this.colorizeButton2);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button2);
@@ -411,6 +454,9 @@ namespace Example
         private System.Windows.Forms.Button button2;
         private TextBox textBox9;
         private TextBox textBox10;
+        private Winform_Custom_Controls.UserControls.ColorizeButton colorizeButton2;
+        private Winform_Custom_Controls.UserControls.ColorizeButton colorizeButton3;
+        private System.Windows.Forms.Button button3;
     }
 }
 
