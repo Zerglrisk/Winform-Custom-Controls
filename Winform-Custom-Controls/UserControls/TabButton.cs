@@ -28,13 +28,7 @@ namespace Winform_Custom_Controls.UserControls
 
 
         //외부이벤트 발생용
-        /// <summary>
-        /// 버튼이벤트 처리로 조회시작
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public delegate void BtnClickEventHandler(object sender, EventArgs e);
-        public event BtnClickEventHandler BtnClick;
+        public event EventHandlers.BtnClickEventHandler BtnClick;
 
 
         [EditorBrowsable(EditorBrowsableState.Always)]
