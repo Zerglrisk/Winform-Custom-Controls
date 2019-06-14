@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Winform_Custom_Controls.enums;
 
 namespace TrueInfoUserControls
 {
@@ -24,8 +25,42 @@ namespace TrueInfoUserControls
             AutoSize = true;
             TextAlign = ContentAlignment.MiddleLeft;
             ImageSize = new Size(0, 0);
+            HeaderType = FrontHeaderType.Image;
+            HeaderText = "■";
         }
-        [Category("DotImages"), Browsable(true)]
+
+        private FrontHeaderType _headerType;
+        [Category("Behavior"),Browsable(true),DefaultValue(typeof(FrontHeaderType), "Image")]
+        public FrontHeaderType HeaderType
+        {
+            get { return _headerType;}
+            set
+            {
+                switch (value)
+                {
+                    case FrontHeaderType.Image:
+                        pictureBox1.Visible = true;
+                        label_header.Visible = false;
+                        break;
+                    case FrontHeaderType.Text:
+                        pictureBox1.Visible = false;
+                        label_header.Visible = true;
+                        break;
+                    default:
+                        break;
+                        //throw new ArgumentOutOfRangeException(nameof(value), value, null);
+                }
+
+                _headerType = value;
+                CheckAutoResize();
+            } }
+
+        [Category("HeaderText"), Browsable(true), DefaultValue("■")]
+        public string HeaderText {
+            get { return label_header.Text; }
+            set { label_header.Text = value; CheckAutoResize(); } }
+
+        [Category("HeaderImage"), Browsable(true)]
         public Image Image
         {
             get { return pictureBox1.Image; }
@@ -41,7 +76,7 @@ namespace TrueInfoUserControls
                 ImageSize = value?.Size ?? new Size(0,0);
             }
         }
-        [Category("DotImages"), Browsable(true), DefaultValue(typeof(Size), "0, 0")]
+        [Category("HeaderImage"), Browsable(true), DefaultValue(typeof(Size), "0, 0")]
         public Size ImageSize
         {
             get { return pictureBox1.Size; }
@@ -51,7 +86,7 @@ namespace TrueInfoUserControls
                 pictureBox1.Size = value;
             }
         }
-        [Category("DotImages"), Browsable(true),DefaultValue(typeof(PictureBoxSizeMode),"CenterImage")]
+        [Category("HeaderImage"), Browsable(true),DefaultValue(typeof(PictureBoxSizeMode),"CenterImage")]
         public PictureBoxSizeMode ImageSizeMode
         {
             get { return pictureBox1.SizeMode; }
@@ -124,11 +159,23 @@ namespace TrueInfoUserControls
             //        : pictureBoxSize.Height;
             //}
             if (!AutoSize) return;
-            this.Width = TextRenderer.MeasureText(label.Text, label.Font).Width + pictureBox1.Size.Width;
+            if (HeaderType == FrontHeaderType.Image)
+            {
+                this.Width = TextRenderer.MeasureText(label.Text, label.Font).Width + pictureBox1.Size.Width;
 
                 this.Height = TextRenderer.MeasureText(label.Text, label.Font).Height > pictureBox1.Size.Height
                     ? TextRenderer.MeasureText(label.Text, label.Font).Height
                     : pictureBox1.Size.Height;
+            }
+            else if (HeaderType == FrontHeaderType.Text)
+            {
+                this.Width = TextRenderer.MeasureText(label.Text, label.Font).Width + TextRenderer.MeasureText(label_header.Text, label_header.Font).Width;
+
+                this.Height = TextRenderer.MeasureText(label.Text, label.Font).Height > TextRenderer.MeasureText(label_header.Text, label_header.Font).Height
+                    ? TextRenderer.MeasureText(label.Text, label.Font).Height
+                    : TextRenderer.MeasureText(label_header.Text, label_header.Font).Height;
+            }
+
             this.PerformAutoScale();
         }
 
@@ -137,17 +184,9 @@ namespace TrueInfoUserControls
             CheckAutoResize();
         }
 
-        private void ChildControls_MouseDown(object sender, MouseEventArgs e)
+        private void FrontHeaderLabel_SizeChanged(object sender, EventArgs e)
         {
-            //UserControl 이벤트와 연결
-            this.OnMouseDown(e);
+            CheckAutoResize();
         }
-
-        private void ChildControls_MouseMove(object sender, MouseEventArgs e)
-        {
-            //UserControl 이벤트와 연결
-            this.OnMouseMove(e);
-        }
-        
     }
 }

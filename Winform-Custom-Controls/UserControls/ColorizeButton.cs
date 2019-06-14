@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Winform_Custom_Controls.enums;
 
 namespace Winform_Custom_Controls.UserControls
 {
@@ -128,6 +129,12 @@ namespace Winform_Custom_Controls.UserControls
                     if (_foreColor == ForeMouseDownColor)
                         ForeMouseDownColor = value;
                     label1.ForeColor = _foreColor = value;
+                }
+
+                if (DesignMode)
+                {
+                    Parent.Refresh(); // Refreshes the client area of the parent control
+                    Invalidate();
                 }
                 
             }

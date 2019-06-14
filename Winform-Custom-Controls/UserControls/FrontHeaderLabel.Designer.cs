@@ -32,20 +32,29 @@ namespace TrueInfoUserControls
         private void InitializeComponent()
         {
             this.label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new ImageButton();
+            this.label_header = new System.Windows.Forms.Label();
+            this.pictureBox1 = new Winform_Custom_Controls.Inherits.ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label
             // 
             this.label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label.Location = new System.Drawing.Point(18, 0);
+            this.label.Location = new System.Drawing.Point(33, 0);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(87, 20);
+            this.label.Size = new System.Drawing.Size(72, 20);
             this.label.TabIndex = 4;
             this.label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseDown);
-            this.label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseMove);
+            // 
+            // label_header
+            // 
+            this.label_header.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label_header.Location = new System.Drawing.Point(18, 0);
+            this.label_header.Name = "label_header";
+            this.label_header.Size = new System.Drawing.Size(15, 20);
+            this.label_header.TabIndex = 5;
+            this.label_header.Text = "■";
+            this.label_header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pictureBox1
             // 
@@ -58,18 +67,18 @@ namespace TrueInfoUserControls
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ChildControls_MouseMove);
             // 
             // FrontHeaderLabel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label);
+            this.Controls.Add(this.label_header);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrontHeaderLabel";
             this.Size = new System.Drawing.Size(105, 20);
             this.AutoSizeChanged += new System.EventHandler(this.usrLabelWithDot_AutoSizeChanged);
+            this.SizeChanged += new System.EventHandler(this.FrontHeaderLabel_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -78,5 +87,6 @@ namespace TrueInfoUserControls
         #endregion
         private ImageButton pictureBox1;
         private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label label_header;
     }
 }
