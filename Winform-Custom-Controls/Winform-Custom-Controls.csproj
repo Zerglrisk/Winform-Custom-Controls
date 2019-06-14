@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="Inherits\BorderComboBox.cs">

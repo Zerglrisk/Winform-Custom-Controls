@@ -262,7 +262,6 @@ namespace Example
             // colorizeButton1
             // 
             this.colorizeButton1.BackDisabledColor = System.Drawing.Color.Empty;
-            this.colorizeButton1.ForeMouseDownColor = System.Drawing.Color.Empty;
             this.colorizeButton1.Location = new System.Drawing.Point(240, 60);
             this.colorizeButton1.Margin = new System.Windows.Forms.Padding(0);
             this.colorizeButton1.Name = "colorizeButton1";
