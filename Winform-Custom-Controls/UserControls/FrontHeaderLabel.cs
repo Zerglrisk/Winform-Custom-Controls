@@ -20,7 +20,6 @@ namespace TrueInfoUserControls
             InitializeComponent();
             this.DoubleBuffered = true;
             
-
             ImageSizeMode = PictureBoxSizeMode.CenterImage;
             AutoSize = true;
             TextAlign = ContentAlignment.MiddleLeft;
@@ -58,8 +57,18 @@ namespace TrueInfoUserControls
         [Category("HeaderText"), Browsable(true), DefaultValue("■")]
         public string HeaderText {
             get { return label_header.Text; }
-            set { label_header.Text = value; CheckAutoResize(); } }
-
+            set { label_header.Text = value; CheckAutoResize(); }
+        }
+        [Category("HeaderText"), Browsable(true),DefaultValue(typeof(Font),null)]
+        [AmbientValue(null)]
+        public Font HeaderFont
+        {
+            get
+            {
+              return  label_header.Font;
+            }
+            set { label_header.Font = value; }
+        }
         [Category("HeaderImage"), Browsable(true)]
         public Image Image
         {
