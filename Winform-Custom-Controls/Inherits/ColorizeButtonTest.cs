@@ -17,6 +17,9 @@ namespace Winform_Custom_Controls.Inherits
         private Color CurrentBackColor;
         private Color CurrentBorderColor;
         private Color _backDisabledColor;
+        private Color _borderColor;
+        private Color _borderDisabledColor;
+        private bool mouseleavedactivatetrigger;
 
         public ColorizeButtonTest()
         {
@@ -27,17 +30,19 @@ namespace Winform_Custom_Controls.Inherits
             BackDisabledColor = ColorTranslator.FromHtml("#CCCCCC");
 
             CurrentBorderColor = BorderColor = SystemColors.ButtonShadow;
-            BorderFocusColor = SystemColors.Highlight;
+            BorderHoverColor = SystemColors.Highlight;
             BorderMouseDownColor = ColorTranslator.FromHtml("#005499");
             BorderDisabledColor = ColorTranslator.FromHtml("#BFBFBF");
             BorderFocusCuesColor = Color.Black;
-            BorderFocusSize = new Padding(2);
+            BorderHoverSize = new Padding(2);
 
             ForeDisabledColor = SystemColors.ButtonShadow;
 
             isMouseEnter = false;
             parentShowFocusCues = false;
             this.UseVisualStyleBackColor = true;
+
+            mouseleavedactivatetrigger = false;
         }
 
         #region Back Colors Properties
@@ -57,8 +62,14 @@ namespace Winform_Custom_Controls.Inherits
             get { return base.BackColor; }
             set
             {
-                base.BackColor = value;
-                CurrentBackColor = base.BackColor;
+                if (value == Color.Empty)
+                {
+                    CurrentBackColor = base.BackColor = SystemColors.ControlLight;
+                }
+                else
+                {
+                    CurrentBackColor = base.BackColor = value;
+                }
             }
         }
 
@@ -82,7 +93,21 @@ namespace Winform_Custom_Controls.Inherits
 
         [Category("Border Color")]
         [DefaultValue(typeof(Color), "ButtonShadow")]
-        public Color BorderColor { get; set; }
+        public Color BorderColor
+        {
+            get { return _borderColor;}
+            set
+            {
+                if (value == Color.Empty)
+                {
+                    CurrentBorderColor = _borderColor = SystemColors.ButtonShadow;
+                }
+                else
+                {
+                    CurrentBorderColor = _borderColor = value;
+                }
+            }
+        }
         [Category("Border Color"),
          Description("This Variable is support.(don't create yet)"),
          Browsable(false)]
@@ -93,7 +118,7 @@ namespace Winform_Custom_Controls.Inherits
         Description("This Variable is support.(don't create yet)"),
         Browsable(false)]
         [DefaultValue(typeof(Padding), "2,2,2,2")]
-        public Padding BorderFocusSize { get; set; }
+        public Padding BorderHoverSize { get; set; }
 
         [Category("Border Color"),
          Description("This focus color is FocusCues color. When FocusCues is True, will can see dotted line with you specified color.")]
@@ -109,13 +134,21 @@ namespace Winform_Custom_Controls.Inherits
          Description("")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "Highlight")]
-        public Color BorderFocusColor { get; set; }
+        public Color BorderHoverColor { get; set; }
 
         [Category("Border Color"),
          Description("")]
         [Browsable(true)]
         [DefaultValue(typeof(Color), "191, 191, 191")]
-        public Color BorderDisabledColor { get; set; }
+        public Color BorderDisabledColor
+        {
+            get { return _borderDisabledColor; }
+            set
+            {
+                _borderDisabledColor = value;
+                CurrentBorderColor = this.Enabled ? BorderColor : value.IsEmpty ? BorderColor : BorderDisabledColor;
+            }
+        }
         #endregion
 
         #region Appearance Properties
@@ -128,7 +161,7 @@ namespace Winform_Custom_Controls.Inherits
         #endregion
 
         //외부이벤트 발생용
-        
+
         public event EventHandlers.BtnClickEventHandler BtnClick;
 
         #region functions
@@ -155,14 +188,10 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            if (this.Enabled && !BackHoverColor.IsEmpty)
+            if (this.Enabled)
             {
-                CurrentBackColor = BackHoverColor;
-            }
-
-            if (this.Enabled && !BorderFocusColor.IsEmpty)
-            {
-                CurrentBorderColor = BorderFocusColor;
+                CurrentBackColor = !BackHoverColor.IsEmpty ? BackHoverColor : CurrentBackColor;
+                CurrentBorderColor = !BorderHoverColor.IsEmpty ? BorderHoverColor : CurrentBorderColor;
             }
 
             isMouseEnter = true;
@@ -172,14 +201,10 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            if (this.Enabled && !BackColor.IsEmpty)
-            {
-                CurrentBackColor = BackColor;
-            }
-
             if (this.Enabled)
             {
-                CurrentBorderColor = !this.Focused ? BorderColor : BorderFocusColor;
+                CurrentBackColor = BackColor;
+                CurrentBorderColor = !this.Focused ? BorderColor : !BorderHoverColor.IsEmpty ? BorderHoverColor : CurrentBorderColor;
             }
 
             isMouseEnter = false;
@@ -189,17 +214,43 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             base.OnMouseDown(mevent);
-            if (this.Enabled && !BackMouseDownColor.IsEmpty)
+            if (this.Enabled)
             {
-                CurrentBackColor = BackMouseDownColor;
+                CurrentBackColor = !BackMouseDownColor.IsEmpty ? BackMouseDownColor : CurrentBackColor;
+                CurrentBorderColor = !BorderMouseDownColor.IsEmpty ? BorderMouseDownColor : CurrentBorderColor;
             }
 
-            if (this.Enabled && !BorderMouseDownColor.IsEmpty)
-            {
-                CurrentBorderColor = BorderMouseDownColor;
-            }
-
+            mouseleavedactivatetrigger = false;
             Invalidate();
+        }
+
+        protected override void OnMouseMove(MouseEventArgs mevent)
+        {
+            base.OnMouseMove(mevent);
+            if (!this.Bounds.Contains(this.Parent.PointToClient(MousePosition)) && !mouseleavedactivatetrigger)
+            {
+                //MouseLeave while MouseDown
+                mouseleavedactivatetrigger = true;
+
+                //Execute OnMouseEnter
+                if (this.Enabled)
+                {
+                    CurrentBackColor = !BackHoverColor.IsEmpty ? BackHoverColor : CurrentBackColor;
+                    CurrentBorderColor = !BorderHoverColor.IsEmpty ? BorderHoverColor : CurrentBorderColor;
+                }
+            }
+            else if (this.Bounds.Contains(this.Parent.PointToClient(MousePosition)) && mouseleavedactivatetrigger)
+            {
+                //When MouseLeave, MouseEnter while MouseDown
+                mouseleavedactivatetrigger = false;
+
+                //Execute OnMouseDown
+                if (this.Enabled)
+                {
+                    CurrentBackColor = !BackMouseDownColor.IsEmpty ? BackMouseDownColor : CurrentBackColor;
+                    CurrentBorderColor = !BorderMouseDownColor.IsEmpty ? BorderMouseDownColor : CurrentBorderColor;
+                }
+            }
         }
 
         protected override void OnMouseUp(MouseEventArgs mevent)
@@ -207,11 +258,11 @@ namespace Winform_Custom_Controls.Inherits
             base.OnMouseUp(mevent);
             if (this.Enabled)
             {
-                CurrentBackColor = isMouseEnter ? BackHoverColor : BackColor;
-                CurrentBorderColor = isMouseEnter ? BorderFocusColor : BorderColor;
+                CurrentBackColor = !BackHoverColor.IsEmpty ? BackHoverColor : CurrentBackColor;
+                CurrentBorderColor = !BorderHoverColor.IsEmpty ? BorderHoverColor : CurrentBorderColor;
             }
 
-
+            mouseleavedactivatetrigger = true;
             Invalidate();
         }
 
@@ -243,7 +294,7 @@ namespace Winform_Custom_Controls.Inherits
             {
 
                 //단순히 탭눌러서 포커스(선택)하면 보더가 회색임. 마우스 클릭해서 포커스(선택)하면 보더가 하이라이트인 현상 수정
-                CurrentBorderColor = BorderFocusColor;
+                CurrentBorderColor = BorderHoverColor;
             }
         }
 
@@ -302,7 +353,7 @@ namespace Winform_Custom_Controls.Inherits
             {
                 if (!isMouseEnter)
                 {
-                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderFocusColor, ButtonBorderStyle.Solid);
+                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderHoverColor, ButtonBorderStyle.Solid);
                 }
 
                 if (/*parentShowFocusCues &&*/ this.ShowFocusCues)
