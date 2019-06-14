@@ -161,7 +161,7 @@ namespace Example
             // colorizeButtonTest1
             // 
             this.colorizeButtonTest1.BorderFocusCuesColor = System.Drawing.Color.Red;
-            this.colorizeButtonTest1.BorderFocusSize = new System.Windows.Forms.Padding(4);
+            this.colorizeButtonTest1.BorderHoverSize = new System.Windows.Forms.Padding(4);
             this.colorizeButtonTest1.BorderSize = new System.Windows.Forms.Padding(4);
             this.colorizeButtonTest1.Location = new System.Drawing.Point(240, 219);
             this.colorizeButtonTest1.Name = "colorizeButtonTest1";
