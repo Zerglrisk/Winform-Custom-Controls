@@ -131,11 +131,6 @@ namespace Winform_Custom_Controls.UserControls
                     label1.ForeColor = _foreColor = value;
                 }
 
-                if (DesignMode)
-                {
-                    Parent.Refresh(); // Refreshes the client area of the parent control
-                    Invalidate();
-                }
                 
             }
         }
