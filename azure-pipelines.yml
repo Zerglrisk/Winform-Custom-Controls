@@ -18,6 +18,7 @@ steps:
 - script: |
    git config --global user.email "wmf1235@naver.com"
    git config --global user.name "Zerglrisk"
+   git config --global core.askpass
   displayName: 'Command Line Script'
 
 - task: tsuyoshiushio.shell-exec.shellexec.shellexec@0
