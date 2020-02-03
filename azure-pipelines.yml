@@ -29,7 +29,7 @@ steps:
   displayName: Pull
 
 - script: |
-   git push https://$(UserName):$(Password)@github.com/Zerglrisk/Winform-Custom-Controls.git -u --all
+   'git push https://$(UserName):$(Password)@github.com/Zerglrisk/Winform-Custom-Controls.git -u --all'
    
   displayName: Push
 
