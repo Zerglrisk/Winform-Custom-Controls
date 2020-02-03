@@ -7,11 +7,11 @@ using Winform_Custom_Controls.enums;
 namespace Winform_Custom_Controls.UserControls
 {
     [DefaultEvent("BtnClick")]
-    public partial class ColorizeButton : UserControl
+    public partial class CtrlColorizeButton : UserControl
     {
         public new bool Focused;
 
-        public ColorizeButton()
+        public CtrlColorizeButton()
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace Winform_Custom_Controls.UserControls
             ForeHoverColor = SystemColors.ControlText;
             ForeMouseDownColor = SystemColors.ControlText;
             ForeDisabledColor = SystemColors.GrayText;
-
+            
             label1.Parent = btnColor;
             label1.BringToFront();
         }

@@ -6,9 +6,9 @@ using System.Windows.Forms;
 namespace Winform_Custom_Controls.UserControls
 {
     [DefaultEvent("BtnClick")]
-    public partial class ImageTabButton : UserControl
+    public partial class CtrlImageTabButton : UserControl
     {
-        public ImageTabButton()
+        public CtrlImageTabButton()
         {
             InitializeComponent();
         }

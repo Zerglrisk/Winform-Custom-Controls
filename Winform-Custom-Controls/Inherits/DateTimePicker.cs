@@ -6,6 +6,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Winform_Custom_Controls.Inherits
 {
+    //폰트벼경 추가하기 : 
     public class DateTimePicker : System.Windows.Forms.DateTimePicker
     {
         private Color _drawBorder;

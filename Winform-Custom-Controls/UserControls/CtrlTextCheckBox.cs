@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.UserControls
 {
-    public partial class TextCheckBox : UserControl
+    public partial class CtrlTextCheckBox : UserControl
     {
-        public TextCheckBox()
+        public CtrlTextCheckBox()
         {
             InitializeComponent();
 

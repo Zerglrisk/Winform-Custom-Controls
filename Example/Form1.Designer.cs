@@ -39,24 +39,25 @@ namespace Example
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.colorizeButtonTest2 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.textBox10 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
-            this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButtonTest();
+            this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.textBox8 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox7 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox6 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox5 = new Winform_Custom_Controls.Inherits.TextBox();
             this.dateTimePicker1 = new Winform_Custom_Controls.Inherits.DateTimePicker();
-            this.tabButton1 = new Winform_Custom_Controls.UserControls.TabButton();
-            this.imageTabButton1 = new Winform_Custom_Controls.UserControls.ImageTabButton();
+            this.tabButton1 = new Winform_Custom_Controls.UserControls.CtrlTabButton();
+            this.imageTabButton1 = new Winform_Custom_Controls.UserControls.CtrlImageTabButton();
             this.imageButton1 = new Winform_Custom_Controls.Inherits.ImageButton();
-            this.colorizeButton1 = new Winform_Custom_Controls.UserControls.ColorizeButton();
+            this.colorizeButton1 = new Winform_Custom_Controls.UserControls.CtrlColorizeButton();
             this.usrButtonTest1 = new Winform_Custom_Controls.Inherits.usrButtonTest();
             this.flatButton1 = new Winform_Custom_Controls.Inherits.FlatButton();
             this.cTextBox1 = new Winform_Custom_Controls.Inherits.CTextBox();
             this.textBox2 = new Winform_Custom_Controls.Inherits.TextBox();
             this.threeWayCheckBox1 = new Winform_Custom_Controls.UserControls.ThreeWayCheckBox();
-            this._textCheckBox1 = new Winform_Custom_Controls.UserControls.TextCheckBox();
+            this._textCheckBox1 = new Winform_Custom_Controls.UserControls.CtrlTextCheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,12 +132,24 @@ namespace Example
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(240, 248);
+            this.button2.Location = new System.Drawing.Point(492, 320);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 23);
             this.button2.TabIndex = 24;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // colorizeButtonTest2
+            // 
+            this.colorizeButtonTest2.BorderFocusCuesColor = System.Drawing.Color.Red;
+            this.colorizeButtonTest2.BorderHoverSize = new System.Windows.Forms.Padding(4);
+            this.colorizeButtonTest2.BorderSize = new System.Windows.Forms.Padding(4);
+            this.colorizeButtonTest2.Location = new System.Drawing.Point(492, 291);
+            this.colorizeButtonTest2.Name = "colorizeButtonTest2";
+            this.colorizeButtonTest2.Size = new System.Drawing.Size(126, 23);
+            this.colorizeButtonTest2.TabIndex = 27;
+            this.colorizeButtonTest2.Text = "colorizeButton";
+            this.colorizeButtonTest2.UseVisualStyleBackColor = true;
             // 
             // textBox10
             // 
@@ -347,6 +360,7 @@ namespace Example
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.colorizeButtonTest2);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
             this.Controls.Add(this.button2);
@@ -384,7 +398,7 @@ namespace Example
 
         #endregion
 
-        private Winform_Custom_Controls.UserControls.TextCheckBox _textCheckBox1;
+        private Winform_Custom_Controls.UserControls.CtrlTextCheckBox _textCheckBox1;
         private System.Windows.Forms.CheckBox checkBox1;
         private Winform_Custom_Controls.UserControls.ThreeWayCheckBox threeWayCheckBox1;
         private System.Windows.Forms.TextBox textBox1;
@@ -393,12 +407,12 @@ namespace Example
         private System.Windows.Forms.Button button1;
         private Winform_Custom_Controls.Inherits.FlatButton flatButton1;
         private Winform_Custom_Controls.Inherits.usrButtonTest usrButtonTest1;
-        private Winform_Custom_Controls.UserControls.ColorizeButton colorizeButton1;
+        private Winform_Custom_Controls.UserControls.CtrlColorizeButton colorizeButton1;
         private ImageButton imageButton1;
-        private Winform_Custom_Controls.UserControls.TabButton tabButton1;
+        private Winform_Custom_Controls.UserControls.CtrlTabButton tabButton1;
         private DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private Winform_Custom_Controls.UserControls.ImageTabButton imageTabButton1;
+        private Winform_Custom_Controls.UserControls.CtrlImageTabButton imageTabButton1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -407,10 +421,11 @@ namespace Example
         private TextBox textBox6;
         private TextBox textBox7;
         private TextBox textBox8;
-        private ColorizeButtonTest colorizeButtonTest1;
+        private ColorizeButton colorizeButtonTest1;
         private System.Windows.Forms.Button button2;
         private TextBox textBox9;
         private TextBox textBox10;
+        private ColorizeButton colorizeButtonTest2;
     }
 }
 

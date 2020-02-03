@@ -6,9 +6,9 @@ using System.Windows.Forms;
 namespace Winform_Custom_Controls.UserControls
 {
     [DefaultEvent("BtnClick")]
-    public partial class TabButton : UserControl
+    public partial class CtrlTabButton : UserControl
     {
-        public TabButton()
+        public CtrlTabButton()
         {
             InitializeComponent();
 
@@ -220,9 +220,9 @@ namespace Winform_Custom_Controls.UserControls
 
 
         #region variable bool SelectedSizeUp
-        private TabButton nextButton;
+        private CtrlTabButton nextButton;
         [Description("가로 또는 세로로 나열 시 사이즈에 의해 크기와 위치가 같이 변경하여야 한다. 이에 따른 연결된 다음 버튼을 선택한다."), Category("Expand")]
-        public TabButton NextButton
+        public CtrlTabButton NextButton
         {
             get
             {
@@ -238,9 +238,9 @@ namespace Winform_Custom_Controls.UserControls
                 nextButton = value;
             }
         }
-        TabButton prevButton;
+        CtrlTabButton prevButton;
         [Description("select를 하나만 하면 그 외 연결된 버튼은 전부 select를 false하기 위해 사용된다."), Category("Expand")]
-        public TabButton PrevButton
+        public CtrlTabButton PrevButton
         {
             get
             {
@@ -310,7 +310,7 @@ namespace Winform_Custom_Controls.UserControls
                 
         }
 
-        public void applyBackColorSet(TabButton btncolor)
+        public void applyBackColorSet(CtrlTabButton btncolor)
         {
             btncolor.BaseColor = this.BaseColor;
             btncolor.SelectedColor = this.SelectedColor;

@@ -1,6 +1,6 @@
 ﻿namespace Winform_Custom_Controls.UserControls
 {
-    partial class TabButton
+    partial class CtrlColorizeButton
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.btnColor = new System.Windows.Forms.Button();
             this.border = new System.Windows.Forms.Panel();
             this.border.SuspendLayout();
             this.SuspendLayout();
@@ -41,37 +42,55 @@
             this.label1.Size = new System.Drawing.Size(98, 48);
             this.label1.TabIndex = 1;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            this.label1.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
-            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            this.label1.Click += new System.EventHandler(this.btnColor_Click);
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnColor_MouseDown);
+            this.label1.MouseEnter += new System.EventHandler(this.btnColor_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.btnColor_MouseLeave);
+            this.label1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnColor_MouseUp);
+            // 
+            // btnColor
+            // 
+            this.btnColor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnColor.FlatAppearance.BorderSize = 0;
+            this.btnColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColor.Location = new System.Drawing.Point(1, 1);
+            this.btnColor.Margin = new System.Windows.Forms.Padding(0);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(98, 48);
+            this.btnColor.TabIndex = 0;
+            this.btnColor.UseVisualStyleBackColor = false;
             // 
             // border
             // 
             this.border.Controls.Add(this.label1);
+            this.border.Controls.Add(this.btnColor);
             this.border.Dock = System.Windows.Forms.DockStyle.Fill;
             this.border.Location = new System.Drawing.Point(0, 0);
+            this.border.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.border.Name = "border";
             this.border.Padding = new System.Windows.Forms.Padding(1);
             this.border.Size = new System.Drawing.Size(100, 50);
             this.border.TabIndex = 2;
             // 
-            // TabButton
+            // ColorizeButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.border);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "TabButton";
+            this.Name = "ColorizeButton";
             this.Size = new System.Drawing.Size(100, 50);
+            this.Load += new System.EventHandler(this.usrButtonColor_Load);
+            this.EnabledChanged += new System.EventHandler(this.usrButtonColor_EnabledChanged);
             this.border.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.Panel border;
     }
 }
