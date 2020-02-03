@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+variables:
+  GitHubPat: 'e9f2587726aaaa568ee1990408ed5a94d0b31b52'
+  
+steps:
+- script: |
+   git config --global user.email "wmf1235@naver.com"
+   git config --global user.name "Zerglrisk"
+  displayName: 'Command Line Script'
+
+- task: tsuyoshiushio.shell-exec.shellexec.shellexec@0
+  displayName: 'shellexec '
+  inputs:
+    code: 'git branch -r | grep -v ''\->'' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done'
+
+- script: 'git pull https://$(GitHubPAT)@github.com/Zerglrisk/Winform-Custom-Controls.git'
+  displayName: Pull
+
+- script: |
+   git push https://$(GitHubPAT)@github.com/Zerglrisk/Winform-Custom-Controls.git -u --all
+   
+  displayName: Push
+
