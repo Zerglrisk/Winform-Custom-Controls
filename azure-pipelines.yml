@@ -7,11 +7,14 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'vs2017-win2016'
 variables:
   GitHubPat: 'e9f2587726aaaa568ee1990408ed5a94d0b31b52'
   
 steps:
+- checkout: self
+  clean: true
+  
 - script: |
    git config --global user.email "wmf1235@naver.com"
    git config --global user.name "Zerglrisk"
