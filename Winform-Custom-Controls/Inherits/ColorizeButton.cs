@@ -296,14 +296,18 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
+
+            //Draw BackColor
             pevent.Graphics.FillRectangle(new SolidBrush(this.Enabled ? CurrentBackColor : BackDisabledColor), 0, 0, Width, Height);
             //TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;qx  
             //TextRenderer.DrawText(pevent.Graphics, Text, Font, new Point(Width + 3, (TextRenderer.MeasureText(this.Text, this.Font).Height)), this.Enabled ? ForeColor : ForeDisabledColor, flags);
+            //Draw Text
             pevent.Graphics.DrawString(this.Text, this.Font,
                 new SolidBrush(this.Enabled ? ForeColor : ForeDisabledColor),
                 AlignDrawingPoint(pevent.Graphics, pevent.Graphics.MeasureString(this.Text, this.Font).ToSize(), this.DisplayRectangle,
                     this.TextAlign));
 
+            //DrawBorder
             ControlPaint.DrawBorder(pevent.Graphics, DisplayRectangle, this.Enabled ? CurrentBorderColor : BorderDisabledColor, ButtonBorderStyle.Solid);
             if (Focused) //선택 시 포커스
             {
