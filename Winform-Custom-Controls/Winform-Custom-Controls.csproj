@@ -51,7 +51,7 @@
     <Compile Include="Inherits\BorderComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Inherits\ColorizeButtonTest.cs">
+    <Compile Include="Inherits\ColorizeButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Inherits\CTextBox.cs">
@@ -81,56 +81,56 @@
     <Compile Include="Inherits\Separator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UserControls\ImageTabButton.cs">
+    <Compile Include="UserControls\CtrlImageTabButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ImageTabButton.designer.cs">
-      <DependentUpon>ImageTabButton.cs</DependentUpon>
+    <Compile Include="UserControls\CtrlImageTabButton.designer.cs">
+      <DependentUpon>CtrlImageTabButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TabButton.cs">
+    <Compile Include="UserControls\CtrlTabButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\TabButton.designer.cs">
-      <DependentUpon>TabButton.cs</DependentUpon>
+    <Compile Include="UserControls\CtrlTabButton.designer.cs">
+      <DependentUpon>CtrlTabButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\ColorizeButton.cs">
+    <Compile Include="UserControls\CtrlColorizeButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ColorizeButton.designer.cs">
-      <DependentUpon>ColorizeButton.cs</DependentUpon>
+    <Compile Include="UserControls\CtrlColorizeButton.designer.cs">
+      <DependentUpon>CtrlColorizeButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TextCheckBox.cs">
+    <Compile Include="UserControls\CtrlTextCheckBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\TextCheckBox.designer.cs">
-      <DependentUpon>TextCheckBox.cs</DependentUpon>
+    <Compile Include="UserControls\CtrlTextCheckBox.designer.cs">
+      <DependentUpon>CtrlTextCheckBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\FrontHeaderLabel.cs">
+    <Compile Include="UserControls\CtrlFrontHeaderLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\FrontHeaderLabel.Designer.cs">
-      <DependentUpon>FrontHeaderLabel.cs</DependentUpon>
+    <Compile Include="UserControls\CtrlFrontHeaderLabel.Designer.cs">
+      <DependentUpon>CtrlFrontHeaderLabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Inherits\ThreeWayCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UserControls\ImageTabButton.resx">
-      <DependentUpon>ImageTabButton.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\CtrlImageTabButton.resx">
+      <DependentUpon>CtrlImageTabButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\TabButton.resx">
-      <DependentUpon>TabButton.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\CtrlTabButton.resx">
+      <DependentUpon>CtrlTabButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ColorizeButton.resx">
-      <DependentUpon>ColorizeButton.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\CtrlColorizeButton.resx">
+      <DependentUpon>CtrlColorizeButton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\TextCheckBox.resx">
-      <DependentUpon>TextCheckBox.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\CtrlTextCheckBox.resx">
+      <DependentUpon>CtrlTextCheckBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\FrontHeaderLabel.resx">
-      <DependentUpon>FrontHeaderLabel.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\CtrlFrontHeaderLabel.resx">
+      <DependentUpon>CtrlFrontHeaderLabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

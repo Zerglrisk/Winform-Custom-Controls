@@ -1,6 +1,6 @@
 ﻿namespace Winform_Custom_Controls.UserControls
 {
-    partial class ImageTabButton
+    partial class CtrlImageTabButton
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.

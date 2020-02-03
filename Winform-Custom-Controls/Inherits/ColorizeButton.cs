@@ -10,10 +10,9 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.Inherits
 {
-    public class ColorizeButtonTest : Button
+    public class ColorizeButton : Button
     {
         private bool isMouseEnter;
-        private bool parentShowFocusCues;
         private Color CurrentBackColor;
         private Color CurrentBorderColor;
         private Color _backDisabledColor;
@@ -21,7 +20,7 @@ namespace Winform_Custom_Controls.Inherits
         private Color _borderDisabledColor;
         private bool mouseleavedactivatetrigger;
 
-        public ColorizeButtonTest()
+        public ColorizeButton()
         {
             BorderSize = new Padding(1);
             CurrentBackColor = BackColor = SystemColors.ControlLight;
@@ -39,10 +38,10 @@ namespace Winform_Custom_Controls.Inherits
             ForeDisabledColor = SystemColors.ButtonShadow;
 
             isMouseEnter = false;
-            parentShowFocusCues = false;
             this.UseVisualStyleBackColor = true;
 
             mouseleavedactivatetrigger = false;
+
         }
 
         #region Back Colors Properties
@@ -150,7 +149,6 @@ namespace Winform_Custom_Controls.Inherits
             }
         }
         #endregion
-
         #region Appearance Properties
 
         [Category("Appearance"),
@@ -166,24 +164,7 @@ namespace Winform_Custom_Controls.Inherits
 
         #region functions
 
-        ///// <summary>
-        ///// This function Capture The UiCues from Parent For Focus Handling.
-        ///// This function was created on the condition that the parents would not change.
-        ///// </summary>
-        ///// <param name="e"></param>
-        //protected override void OnParentChanged(EventArgs e)
-        //{
-        //    base.OnParentChanged(e);
-        //    if (Parent != null)
-        //    {
-        //        base.Parent.ChangeUICues += ParentOnChangeUiCues;
-        //    }
-        //}
-
-        //private void ParentOnChangeUiCues(object sender, UICuesEventArgs e)
-        //{
-        //        parentShowFocusCues = e.ChangeFocus;
-        //}
+        #region Override Functions
 
         protected override void OnMouseEnter(EventArgs e)
         {
@@ -312,6 +293,36 @@ namespace Winform_Custom_Controls.Inherits
             base.OnPaintBackground(pevent);
         }
 
+        protected override void OnPaint(PaintEventArgs pevent)
+        {
+            base.OnPaint(pevent);
+            pevent.Graphics.FillRectangle(new SolidBrush(this.Enabled ? CurrentBackColor : BackDisabledColor), 0, 0, Width, Height);
+            //TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;qx  
+            //TextRenderer.DrawText(pevent.Graphics, Text, Font, new Point(Width + 3, (TextRenderer.MeasureText(this.Text, this.Font).Height)), this.Enabled ? ForeColor : ForeDisabledColor, flags);
+            pevent.Graphics.DrawString(this.Text, this.Font,
+                new SolidBrush(this.Enabled ? ForeColor : ForeDisabledColor),
+                AlignDrawingPoint(pevent.Graphics, pevent.Graphics.MeasureString(this.Text, this.Font).ToSize(), this.DisplayRectangle,
+                    this.TextAlign));
+
+            ControlPaint.DrawBorder(pevent.Graphics, DisplayRectangle, this.Enabled ? CurrentBorderColor : BorderDisabledColor, ButtonBorderStyle.Solid);
+            if (Focused) //선택 시 포커스
+            {
+                if (!isMouseEnter)
+                {
+                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderHoverColor, ButtonBorderStyle.Solid);
+                }
+
+                if (this.ShowFocusCues)
+                {
+
+                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(2, 2, Width - 4, Height - 4), BorderFocusCuesColor, ButtonBorderStyle.Dotted);
+                }
+            }
+
+        }
+
+        #endregion
+
         void DrawImageCore(Graphics graphics, Image image, Rectangle imageBounds, Point imageStart)
         {
             // FOR EVERETT COMPATIBILITY - DO NOT CHANGE
@@ -336,35 +347,6 @@ namespace Winform_Custom_Controls.Inherits
             {
             }
         }
-
-        protected override void OnPaint(PaintEventArgs pevent)
-        {
-            base.OnPaint(pevent);
-            pevent.Graphics.FillRectangle(new SolidBrush(this.Enabled ? CurrentBackColor : BackDisabledColor), 0, 0, Width, Height);
-            //TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
-            //TextRenderer.DrawText(pevent.Graphics, Text, Font, new Point(Width + 3, (TextRenderer.MeasureText(this.Text, this.Font).Height)), this.Enabled ? ForeColor : ForeDisabledColor, flags);
-            pevent.Graphics.DrawString(this.Text, this.Font,
-                new SolidBrush(this.Enabled ? ForeColor : ForeDisabledColor),
-                AlignDrawingPoint(pevent.Graphics, pevent.Graphics.MeasureString(this.Text, this.Font).ToSize(), this.ClientRectangle,
-                    this.TextAlign));
-
-            ControlPaint.DrawBorder(pevent.Graphics, DisplayRectangle, this.Enabled ? CurrentBorderColor : BorderDisabledColor, ButtonBorderStyle.Solid);
-            if (Focused) //선택 시 포커스
-            {
-                if (!isMouseEnter)
-                {
-                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(1, 1, Width - 2, Height - 2), BorderHoverColor, ButtonBorderStyle.Solid);
-                }
-
-                if (/*parentShowFocusCues &&*/ this.ShowFocusCues)
-                {
-
-                    ControlPaint.DrawBorder(pevent.Graphics, new Rectangle(2, 2, Width - 4, Height - 4), BorderFocusCuesColor, ButtonBorderStyle.Dotted);
-                }
-            }
-
-        }
-
         //TextImageRelation RtlTranslateRelation(TextImageRelation relation)
         //{
         //    // If RTL, we swap ImageBeforeText and TextBeforeImage
