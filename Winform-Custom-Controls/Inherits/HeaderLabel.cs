@@ -9,14 +9,14 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.Inherits
 {
-    public class HeaderLabel : System.Windows.Forms.Label
+    public class ContentLabel : System.Windows.Forms.Label
     {
 
         private Color CurrentBackColor;
         private Color _backDisabledColor;
         private bool _isRequire;
 
-        public HeaderLabel()
+        public ContentLabel()
         {
 
 
