@@ -63,6 +63,9 @@
     <Compile Include="Inherits\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Inherits\HeaderLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Inherits\TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
