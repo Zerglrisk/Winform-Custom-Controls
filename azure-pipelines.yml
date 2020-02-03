@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'vs2017-win2016'
 variables:
-  GitHubPat: 'e9f2587726aaaa568ee1990408ed5a94d0b31b52'
+  GitHubPat: '5f3b13e8fe233a5f9d5224fcbbfa8612f78da3b6'
   
 steps:
 - checkout: self
