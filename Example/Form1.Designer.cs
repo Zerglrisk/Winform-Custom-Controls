@@ -40,8 +40,8 @@ namespace Example
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.headerLabel2 = new Winform_Custom_Controls.Inherits.HeaderLabel();
-            this.headerLabel1 = new Winform_Custom_Controls.Inherits.HeaderLabel();
+            this.ContentLabel2 = new Winform_Custom_Controls.Inherits.ContentLabel();
+            this.ContentLabel1 = new Winform_Custom_Controls.Inherits.ContentLabel();
             this.colorizeButtonTest2 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.textBox10 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
@@ -151,26 +151,26 @@ namespace Example
             this.label3.TabIndex = 28;
             this.label3.Text = "label3tttttttttttttttttttttttt";
             // 
-            // headerLabel2
+            // ContentLabel2
             // 
-            this.headerLabel2.AutoSize = true;
-            this.headerLabel2.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.headerLabel2.IsRequire = true;
-            this.headerLabel2.Location = new System.Drawing.Point(446, 179);
-            this.headerLabel2.Name = "headerLabel2";
-            this.headerLabel2.Size = new System.Drawing.Size(217, 19);
-            this.headerLabel2.TabIndex = 30;
-            this.headerLabel2.Text = "headerLabel15555555555";
+            this.ContentLabel2.AutoSize = true;
+            this.ContentLabel2.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ContentLabel2.IsRequire = true;
+            this.ContentLabel2.Location = new System.Drawing.Point(446, 179);
+            this.ContentLabel2.Name = "ContentLabel2";
+            this.ContentLabel2.Size = new System.Drawing.Size(217, 19);
+            this.ContentLabel2.TabIndex = 30;
+            this.ContentLabel2.Text = "ContentLabel15555555555";
             // 
-            // headerLabel1
+            // ContentLabel1
             // 
-            this.headerLabel1.Font = new System.Drawing.Font("굴림", 13F);
-            this.headerLabel1.IsRequire = true;
-            this.headerLabel1.Location = new System.Drawing.Point(445, 89);
-            this.headerLabel1.Name = "headerLabel1";
-            this.headerLabel1.Size = new System.Drawing.Size(100, 125);
-            this.headerLabel1.TabIndex = 29;
-            this.headerLabel1.Text = "headerLabel15555555555";
+            this.ContentLabel1.Font = new System.Drawing.Font("굴림", 13F);
+            this.ContentLabel1.IsRequire = true;
+            this.ContentLabel1.Location = new System.Drawing.Point(445, 89);
+            this.ContentLabel1.Name = "ContentLabel1";
+            this.ContentLabel1.Size = new System.Drawing.Size(100, 125);
+            this.ContentLabel1.TabIndex = 29;
+            this.ContentLabel1.Text = "ContentLabel15555555555";
             // 
             // colorizeButtonTest2
             // 
@@ -393,8 +393,8 @@ namespace Example
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.headerLabel2);
-            this.Controls.Add(this.headerLabel1);
+            this.Controls.Add(this.ContentLabel2);
+            this.Controls.Add(this.ContentLabel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.colorizeButtonTest2);
             this.Controls.Add(this.textBox10);
@@ -463,8 +463,8 @@ namespace Example
         private TextBox textBox10;
         private ColorizeButton colorizeButtonTest2;
         private System.Windows.Forms.Label label3;
-        private HeaderLabel headerLabel1;
-        private HeaderLabel headerLabel2;
+        private ContentLabel ContentLabel1;
+        private ContentLabel ContentLabel2;
     }
 }
 
