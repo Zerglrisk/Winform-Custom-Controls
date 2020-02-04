@@ -39,6 +39,9 @@ namespace Example
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.headerLabel2 = new Winform_Custom_Controls.Inherits.HeaderLabel();
+            this.headerLabel1 = new Winform_Custom_Controls.Inherits.HeaderLabel();
             this.colorizeButtonTest2 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.textBox10 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
@@ -138,6 +141,36 @@ namespace Example
             this.button2.TabIndex = 24;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Location = new System.Drawing.Point(569, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 133);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "label3tttttttttttttttttttttttt";
+            // 
+            // headerLabel2
+            // 
+            this.headerLabel2.AutoSize = true;
+            this.headerLabel2.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.headerLabel2.IsRequire = true;
+            this.headerLabel2.Location = new System.Drawing.Point(446, 179);
+            this.headerLabel2.Name = "headerLabel2";
+            this.headerLabel2.Size = new System.Drawing.Size(217, 19);
+            this.headerLabel2.TabIndex = 30;
+            this.headerLabel2.Text = "headerLabel15555555555";
+            // 
+            // headerLabel1
+            // 
+            this.headerLabel1.Font = new System.Drawing.Font("굴림", 13F);
+            this.headerLabel1.IsRequire = true;
+            this.headerLabel1.Location = new System.Drawing.Point(445, 89);
+            this.headerLabel1.Name = "headerLabel1";
+            this.headerLabel1.Size = new System.Drawing.Size(100, 125);
+            this.headerLabel1.TabIndex = 29;
+            this.headerLabel1.Text = "headerLabel15555555555";
             // 
             // colorizeButtonTest2
             // 
@@ -360,6 +393,9 @@ namespace Example
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.headerLabel2);
+            this.Controls.Add(this.headerLabel1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.colorizeButtonTest2);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
@@ -426,6 +462,9 @@ namespace Example
         private TextBox textBox9;
         private TextBox textBox10;
         private ColorizeButton colorizeButtonTest2;
+        private System.Windows.Forms.Label label3;
+        private HeaderLabel headerLabel1;
+        private HeaderLabel headerLabel2;
     }
 }
 
