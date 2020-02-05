@@ -48,6 +48,7 @@
     <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
     <Compile Include="EventHandlers.cs" />
+    <Compile Include="EventTemplates.cs" />
     <Compile Include="Inherits\BorderComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -118,6 +119,7 @@
     <Compile Include="Inherits\ThreeWayCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="WinAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\CtrlImageTabButton.resx">
