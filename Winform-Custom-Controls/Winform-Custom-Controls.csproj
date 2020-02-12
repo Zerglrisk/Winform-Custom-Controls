@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboBoxBinder.cs" />
+    <Compile Include="CommonExtensions.cs" />
     <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
     <Compile Include="EventHandlers.cs" />
@@ -85,6 +87,8 @@
     <Compile Include="Inherits\Separator.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Model\ComboBoxItem.cs" />
+    <Compile Include="Model\ComboBoxItems.cs" />
     <Compile Include="UserControls\CtrlImageTabButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -138,5 +142,6 @@
       <DependentUpon>CtrlFrontHeaderLabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
