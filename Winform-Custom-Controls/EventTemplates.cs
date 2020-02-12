@@ -44,8 +44,6 @@ namespace Winform_Custom_Controls
                     e.Handled = true;
                     break;
             }
-
-
         }
 
         /// <summary>
@@ -84,6 +82,40 @@ namespace Winform_Custom_Controls
         public static void TextBox_Got_Focus(object sender, EventArgs e)
         {
             WinAPI.HideCaret(((System.Windows.Forms.TextBox)sender).Handle);
+        }
+
+        /// <summary>
+        /// 이를 사용하면 사용한 컨트롤의 MouseUp, Click이 작동하지 않음.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void DragMoveWindowMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                WinAPI.ReleaseCapture();
+                Control panel;
+                for (panel = (sender as Control); panel.Parent != null; panel = panel.Parent) ;
+                //SendMessage((sender as Panel).Parent.Handle, WM_NCBUTTONDOWN, HT_CAPTION, 0);
+                WinAPI.SendMessage(panel.Handle, (int) WindowsMessages.WM_NCLBUTTONDOWN, (int) CursorPositions.HTCAPTION, 0);
+            }
+        }
+
+        /// <summary>
+        /// 드래그 무브 이벤트, 주로 이 것을 사용
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void DragMoveWindowMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                WinAPI.ReleaseCapture();
+                Control panel;
+                for (panel = (sender as Control); panel.Parent != null; panel = panel.Parent) ;
+                //SendMessage((sender as Panel).Parent.Handle, WM_NCBUTTONDOWN, HT_CAPTION, 0);
+                WinAPI.SendMessage(panel.Handle, (int)WindowsMessages.WM_NCLBUTTONDOWN, (int)CursorPositions.HTCAPTION, 0);
+            }
         }
     }
 }
