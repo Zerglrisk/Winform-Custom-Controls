@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="ComboBoxBinder.cs" />
     <Compile Include="CommonExtensions.cs" />
+    <Compile Include="Core\Data\LayoutUtils.cs" />
+    <Compile Include="Core\Data\WindowGraphics.cs" />
+    <Compile Include="Core\Data\WindowFormsUtils.cs" />
     <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
     <Compile Include="EventHandlers.cs" />

@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Winform_Custom_Controls.Core.Data;
 
 namespace Winform_Custom_Controls.Inherits
 {
@@ -17,6 +18,7 @@ namespace Winform_Custom_Controls.Inherits
         private Color CurrentBackColor;
         private Color _backDisabledColor;
         private bool _isRequire;
+        private LayoutUtils.MeasureTextCache textMeasurementCache;
 
         public ContentLabel()
         {
@@ -98,6 +100,19 @@ namespace Winform_Custom_Controls.Inherits
 
         #endregion
 
+        #region internal Fields
+
+        internal LayoutUtils.MeasureTextCache MeasureTextCache
+        {
+            get
+            {
+                if (this.textMeasurementCache == null)
+                    this.textMeasurementCache = new LayoutUtils.MeasureTextCache();
+                return this.textMeasurementCache;
+            }
+        }
+
+        #endregion
         #region Functions
 
         protected override void OnTextChanged(EventArgs e)
@@ -124,12 +139,12 @@ namespace Winform_Custom_Controls.Inherits
             //{
             //    pevent.Graphics.DrawString(this.RequireChar.ToString(), this.Font, new SolidBrush(this.RequireColor), size.Width-(this.AutoSize ? 5 : 0), 0);
             //}
-            var rectangle = DeflateRect(this.ClientRectangle, this.Padding);
+            var rectangle = LayoutUtils.DeflateRect(this.ClientRectangle, this.Padding);
             IntPtr hdc = pevent.Graphics.GetHdc();
             Color nearestColor;
             try
             {
-                nearestColor = GetNearestColors(this.Enabled ? this.ForeColor : this.ForeColor, hdc); //this.DisabledColor);
+                nearestColor = WindowGraphics.GetNearestColor(this.Enabled ? this.ForeColor : this.ForeColor, hdc); //this.DisabledColor);
             }
             finally
             {
@@ -162,22 +177,6 @@ namespace Winform_Custom_Controls.Inherits
 
         }
 
-        public static Rectangle DeflateRect(Rectangle rect, Padding padding)
-        {
-            rect.X += padding.Left;
-            rect.Y += padding.Top;
-            rect.Width -= padding.Horizontal;
-            rect.Height -= padding.Vertical;
-            return rect;
-        }
-        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern int GetNearestColor(HandleRef hDC, int color);
-        public Color GetNearestColors(Color color, IntPtr hdc)
-        {
-            return ColorTranslator.FromWin32(GetNearestColor(new HandleRef((object)null, hdc), ColorTranslator.ToWin32(color)));
-        }
-
-
         private TextFormatFlags CreateTextFormatFlags()
         {
             return this.CreateTextFormatFlags(this.Size - this.GetBordersAndPadding());
@@ -185,8 +184,8 @@ namespace Winform_Custom_Controls.Inherits
 
         internal virtual TextFormatFlags CreateTextFormatFlags(Size constrainingSize)
         {
-            TextFormatFlags textFormatFlags = CreateTextFormatFlags(this.TextAlign, this.AutoEllipsis, this.UseMnemonic);
-            if (!this.TextRequiresWordBreak(this.Text, this.Font, constrainingSize, textFormatFlags))
+            TextFormatFlags textFormatFlags = WindowFormsUtils.CreateTextFormatFlags((Control)this, this.TextAlign, this.AutoEllipsis, this.UseMnemonic,this.ShowKeyboardCues);
+            if (!this.MeasureTextCache.TextRequiresWordBreak(this.Text, this.Font, constrainingSize, textFormatFlags))
                 textFormatFlags &= ~(TextFormatFlags.TextBoxControl | TextFormatFlags.WordBreak);
             return textFormatFlags;
         }
@@ -212,97 +211,11 @@ namespace Winform_Custom_Controls.Inherits
             }
             return size;
         }
-        public static readonly ContentAlignment AnyTopAlign = ContentAlignment.TopLeft | ContentAlignment.TopCenter | ContentAlignment.TopRight;
-        public static readonly ContentAlignment AnyBottomAlign = ContentAlignment.BottomLeft | ContentAlignment.BottomCenter | ContentAlignment.BottomRight;
-        public static readonly ContentAlignment AnyMiddleAlign = ContentAlignment.MiddleLeft | ContentAlignment.MiddleCenter | ContentAlignment.MiddleRight;
-        protected internal ContentAlignment RtlTranslateContents(ContentAlignment align)
-        {
-            if (RightToLeft.Yes == this.RightToLeft)
-            {
-                if ((align & AnyTopAlign) != (ContentAlignment)0)
-                {
-                    if (align == ContentAlignment.TopLeft)
-                        return ContentAlignment.TopRight;
-                    if (align == ContentAlignment.TopRight)
-                        return ContentAlignment.TopLeft;
-                }
-                if ((align & AnyMiddleAlign) != (ContentAlignment)0)
-                {
-                    if (align == ContentAlignment.MiddleLeft)
-                        return ContentAlignment.MiddleRight;
-                    if (align == ContentAlignment.MiddleRight)
-                        return ContentAlignment.MiddleLeft;
-                }
-                if ((align & AnyBottomAlign) != (ContentAlignment)0)
-                {
-                    if (align == ContentAlignment.BottomLeft)
-                        return ContentAlignment.BottomRight;
-                    if (align == ContentAlignment.BottomRight)
-                        return ContentAlignment.BottomLeft;
-                }
-            }
-            return align;
-        }
-        internal TextFormatFlags CreateTextFormatFlags(
-            System.Drawing.ContentAlignment textAlign,
-            bool showEllipsis,
-            bool useMnemonic)
-        {
-            textAlign = RtlTranslateContents(textAlign);
-            TextFormatFlags textFormatFlags = TextFormatFlagsForAlignmentGDI(textAlign) | TextFormatFlags.TextBoxControl | TextFormatFlags.WordBreak;
-            if (showEllipsis)
-                textFormatFlags |= TextFormatFlags.EndEllipsis;
-            if (this.RightToLeft == RightToLeft.Yes)
-                textFormatFlags |= TextFormatFlags.RightToLeft;
-            if (!useMnemonic)
-                textFormatFlags |= TextFormatFlags.NoPrefix;
-            else if (!this.ShowKeyboardCues)
-                textFormatFlags |= TextFormatFlags.HidePrefix;
-            return textFormatFlags;
-        }
 
 
+        
 
-        public static readonly Size InvalidSize = new Size(int.MinValue, int.MinValue);
-        public static readonly Size MaxSize = new Size(int.MaxValue, int.MaxValue);
-        private static Size unconstrainedPreferredSize = InvalidSize;
-        private Size GetUnconstrainedSize(string text, Font font, TextFormatFlags flags)
-        {
-            if (unconstrainedPreferredSize == InvalidSize)
-            {
-                flags &= ~TextFormatFlags.WordBreak;
-                unconstrainedPreferredSize = TextRenderer.MeasureText(text, font, MaxSize, flags);
-            }
-            return unconstrainedPreferredSize;
-        }
-
-        public bool TextRequiresWordBreak(string text, Font font, Size size, TextFormatFlags flags)
-        {
-            return this.GetUnconstrainedSize(text, font, flags).Width > size.Width;
-        }
-
-        private static readonly System.Drawing.ContentAlignment anyRight = System.Drawing.ContentAlignment.TopRight | System.Drawing.ContentAlignment.MiddleRight | System.Drawing.ContentAlignment.BottomRight;
-        private static readonly System.Drawing.ContentAlignment anyBottom = System.Drawing.ContentAlignment.BottomLeft | System.Drawing.ContentAlignment.BottomCenter | System.Drawing.ContentAlignment.BottomRight;
-        private static readonly System.Drawing.ContentAlignment anyCenter = System.Drawing.ContentAlignment.TopCenter | System.Drawing.ContentAlignment.MiddleCenter | System.Drawing.ContentAlignment.BottomCenter;
-        private static readonly System.Drawing.ContentAlignment anyMiddle = System.Drawing.ContentAlignment.MiddleLeft | System.Drawing.ContentAlignment.MiddleCenter | System.Drawing.ContentAlignment.MiddleRight;
-
-
-        internal static TextFormatFlags TextFormatFlagsForAlignmentGDI(
-            System.Drawing.ContentAlignment align)
-        {
-            return TextFormatFlags.Default | TranslateAlignmentForGDI(align) | TranslateLineAlignmentForGDI(align);
-        }
-
-        internal static TextFormatFlags TranslateAlignmentForGDI(System.Drawing.ContentAlignment align)
-        {
-            return (align & anyBottom) == (System.Drawing.ContentAlignment)0 ? ((align & anyMiddle) == (System.Drawing.ContentAlignment)0 ? TextFormatFlags.Default : TextFormatFlags.VerticalCenter) : TextFormatFlags.Bottom;
-        }
-
-        internal static TextFormatFlags TranslateLineAlignmentForGDI(
-            System.Drawing.ContentAlignment align)
-        {
-            return (align & anyRight) == (System.Drawing.ContentAlignment)0 ? ((align & anyCenter) == (System.Drawing.ContentAlignment)0 ? TextFormatFlags.Default : TextFormatFlags.HorizontalCenter) : TextFormatFlags.Right;
-        }
+       
 
         #endregion
     }

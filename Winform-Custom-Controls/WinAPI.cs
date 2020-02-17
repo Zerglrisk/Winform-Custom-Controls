@@ -49,6 +49,21 @@ namespace Winform_Custom_Controls
         /// <returns></returns>
         [DllImport("user32.dll")]
         public static extern IntPtr DefWindowProcA(IntPtr hwnd, int uMsg, IntPtr wParam, IntPtr lParam);
+
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetNearestColor(HandleRef hDC, int color);
+
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int SetTextColor(HandleRef hDC, int crColor);
+
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetTextAlign(HandleRef hdc);
+
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int GetTextColor(HandleRef hDC);
+
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        public static extern int SetBkColor(HandleRef hDC, int clr);
     }
 
     public enum WindowsMessages : int
