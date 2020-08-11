@@ -19,7 +19,7 @@ namespace Winform_Custom_Controls.Inherits
         [Category("ButtonAppearance"), DefaultValue(false)]
         public bool InvertImageOnDisabled
         {
-            get { return _invertImageOnDisabled; }
+            get => _invertImageOnDisabled;
             set
             {
                 _invertImageOnDisabled = value;
@@ -27,73 +27,46 @@ namespace Winform_Custom_Controls.Inherits
             }
         }
 
-        private Image _hoverimage;
         [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
-        public Image HoverImage
-        {
-            get
-            {
-                return _hoverimage;
-            }
-            set
-            {
-                _hoverimage = value;
-            }
-        }
+        public Image HoverImage { get; set; }
+
         [Category("ButtonAppearance")]
         [DefaultValue(typeof(PictureBoxSizeMode), "StretchImage")]
         public PictureBoxSizeMode ImageSizeMode
         {
-            get { return base.SizeMode; }
-            set { base.SizeMode = value; }
+            get => base.SizeMode;
+            set => base.SizeMode = value;
         }
 
-        private Image _baseimage;
+        private Image _baseImage;
         [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
         public Image BaseImage
         {
-            get
-            {
-                return _baseimage;
-            }
+            get => _baseImage;
             set
             {
-                _baseimage = value;
+                _baseImage = value;
                 BaseImage_Changed();
             }
         }
 
-        private Image _mouseDownImage;
         [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
-        public Image MouseDownImage
-        {
-            get
-            {
-                return _mouseDownImage;
-            }
-            set
-            {
-                _mouseDownImage = value;
-            }
-        }
+        public Image MouseDownImage { get; set; }
 
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
         }
 
-        private Image _disabledimage;
+        private Image _disabledImage;
         [Category("ButtonAppearance"), DefaultValue(typeof(Image), null)]
         public Image DisabledImage
         {
-            get
-            {
-                return _disabledimage;
-            }
+            get => _disabledImage;
             set
             {
-                _disabledimage = value;
-                if (_disabledimage != null)
+                _disabledImage = value;
+                if (_disabledImage != null)
                     BaseImage_Changed();
             }
         }

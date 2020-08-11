@@ -39,7 +39,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(false)]
         public bool IsRequire
         {
-            get { return _isRequire; }
+            get => _isRequire;
             set
             {
                 _isRequire = value;
@@ -64,7 +64,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "Control")]
         public override Color BackColor
         {
-            get { return base.BackColor; }
+            get => base.BackColor;
             set
             {
                 if (value == Color.Empty)
@@ -83,7 +83,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "204, 204, 204")]
         public Color BackDisabledColor
         {
-            get { return _backDisabledColor; }
+            get => _backDisabledColor;
             set
             {
                 _backDisabledColor = value;

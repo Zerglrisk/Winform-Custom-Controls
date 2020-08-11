@@ -33,8 +33,8 @@ namespace Winform_Custom_Controls.UserControls
         [Category("CheckBox")]
         public System.Windows.Forms.HorizontalAlignment TextAlign
         {
-            get { return txt_Shown.TextAlign; }
-            set { txt_Shown.TextAlign = value; }
+            get => txt_Shown.TextAlign;
+            set => txt_Shown.TextAlign = value;
         }
 
         private string _trueText;
@@ -42,7 +42,7 @@ namespace Winform_Custom_Controls.UserControls
         [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string TrueText
         {
-            get { return _trueText; }
+            get => _trueText;
             set
             {
                 _trueText = value;
@@ -57,7 +57,7 @@ namespace Winform_Custom_Controls.UserControls
         [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string FalseText
         {
-            get { return _falseText; }
+            get => _falseText;
             set
             {
 
@@ -72,7 +72,7 @@ namespace Winform_Custom_Controls.UserControls
         [Category("CheckBox")]
         public bool Checked
         {
-            get { return _checked; }
+            get => _checked;
             set
             {
                 _checked = value;
@@ -107,7 +107,7 @@ namespace Winform_Custom_Controls.UserControls
         [Description("텍스트의 여러 줄을 사용합니다."), Category("CheckBox")]
         public bool MultiLine
         {
-            get { return txt_Shown.Multiline;}
+            get => txt_Shown.Multiline;
             set
             {
                 txt_Shown.Multiline = value;

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.Inherits
 {
-    public class FlatButton : Button
+    public sealed class FlatButton : Button
     {
         private bool isMouseHover;
         private bool parentShowFocusCues;
@@ -12,7 +12,7 @@ namespace Winform_Custom_Controls.Inherits
         {
             BackColor = Color.DodgerBlue;
             ForeColor = Color.White;
-            CurrentBackColor = BackColor;
+            _currentBackColor = BackColor;
 
             isMouseHover = false;
             parentShowFocusCues = false;
@@ -35,25 +35,25 @@ namespace Winform_Custom_Controls.Inherits
             parentShowFocusCues = e.ChangeFocus;
         }
 
-        private Color CurrentBackColor;
+        private Color _currentBackColor;
 
         public override Color BackColor { get { return base.BackColor; }
             set { base.BackColor = value;
-                CurrentBackColor = base.BackColor;
+                _currentBackColor = base.BackColor;
             }
         }
 
-        private Color onHoverBackColor = Color.DarkOrchid;
+        private Color _onHoverBackColor = Color.DarkOrchid;
         public Color OnHoverBackColor
         {
-            get { return onHoverBackColor; }
-            set { onHoverBackColor = value; Invalidate(); }
+            get => _onHoverBackColor;
+            set { _onHoverBackColor = value; Invalidate(); }
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            CurrentBackColor = onHoverBackColor;
+            _currentBackColor = _onHoverBackColor;
             isMouseHover = true;
             Invalidate();
         }
@@ -61,7 +61,7 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            CurrentBackColor = BackColor;
+            _currentBackColor = BackColor;
             isMouseHover = false;
             Invalidate();
         }
@@ -69,7 +69,7 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseDown(MouseEventArgs mevent)
         {
             base.OnMouseDown(mevent);
-            CurrentBackColor = Color.RoyalBlue;
+            _currentBackColor = Color.RoyalBlue;
 
             Invalidate();
         }
@@ -77,14 +77,14 @@ namespace Winform_Custom_Controls.Inherits
         protected override void OnMouseUp(MouseEventArgs mevent)
         {
             base.OnMouseUp(mevent);
-            CurrentBackColor = BackColor;
+            _currentBackColor = BackColor;
             Invalidate();
         }
         
         protected override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
-            pevent.Graphics.FillRectangle(new SolidBrush(CurrentBackColor), 0, 0, Width, Height);
+            pevent.Graphics.FillRectangle(new SolidBrush(_currentBackColor), 0, 0, Width, Height);
             TextFormatFlags flags = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
 
             TextRenderer.DrawText(pevent.Graphics, Text, Font, new Point(Width + 3, (TextRenderer.MeasureText(this.Text, this.Font).Height)), ForeColor, flags);

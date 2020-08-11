@@ -37,10 +37,7 @@ namespace Winform_Custom_Controls.UserControls
         [Bindable(true)]
         public override Font Font
         {
-            get
-            {
-                return base.Font;
-            }
+            get => base.Font;
             set
             {
                 base.Font = value;             
@@ -53,7 +50,7 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Padding), "1,1,1,1")]
         public Padding BorderSize
         {
-            get { return _borderSize;}
+            get => _borderSize;
             set
             {
                 _borderSize = value;
@@ -69,12 +66,8 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Color),"Control")]
         public Color BaseColor
         {
-            get { return _baseColor;}
-            set
-            {
-                _baseColor = border.BackColor = value;
-                
-            }
+            get => _baseColor;
+            set => _baseColor = border.BackColor = value;
         }
 
         #region variable int ExpandWidth
@@ -133,10 +126,7 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(false)]
         public bool Selected
         {
-            get
-            {
-                return _selected;
-            }
+            get => _selected;
             set
             {
                 if (_selected == value) return;
@@ -265,10 +255,7 @@ namespace Winform_Custom_Controls.UserControls
         [Bindable(true)]
         public override string Text
         {
-            get
-            {
-                return base.Text;
-            }
+            get => base.Text;
             set
             {
                 base.Text = value;

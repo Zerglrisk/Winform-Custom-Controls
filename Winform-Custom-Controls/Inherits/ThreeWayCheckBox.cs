@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.UserControls
 {
-    public partial class ThreeWayCheckBox : TextBox
+    public sealed class ThreeWayCheckBox : TextBox
     {
         public ThreeWayCheckBox()
         {
@@ -30,14 +30,18 @@ namespace Winform_Custom_Controls.UserControls
         [Browsable(false)]
         private new bool ReadOnly
         {
-            get { return base.ReadOnly; }
-            set { base.ReadOnly = value; }
+            get => base.ReadOnly;
+            set => base.ReadOnly = value;
         }
         /// <summary>
         /// 미사용(숨김 표시처리용)
         /// </summary>
         [Browsable(false)]
-        private new string Text { get { return base.Text; } set { base.Text = value; } }
+        private new string Text 
+        { 
+            get => base.Text;
+            set => base.Text = value;
+        }
         #endregion
 
         #region CheckBox Properties
@@ -48,8 +52,8 @@ namespace Winform_Custom_Controls.UserControls
         [Category("CheckBox")]
         public new System.Windows.Forms.HorizontalAlignment TextAlign
         {
-            get { return base.TextAlign; }
-            set { base.TextAlign = value; }
+            get => base.TextAlign;
+            set => base.TextAlign = value;
         }
 
         private string _firstState;
@@ -57,7 +61,7 @@ namespace Winform_Custom_Controls.UserControls
         [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string FirstState
         {
-            get { return _firstState; }
+            get => _firstState;
             set
             {
                 _firstState = value;
@@ -72,7 +76,7 @@ namespace Winform_Custom_Controls.UserControls
         [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string SecondState
         {
-            get { return _secondState; }
+            get => _secondState;
             set
             {
 
@@ -87,7 +91,7 @@ namespace Winform_Custom_Controls.UserControls
         [Editor(typeof(MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public string ThirdState
         {
-            get { return _thirdState; }
+            get => _thirdState;
             set
             {
 
@@ -104,18 +108,16 @@ namespace Winform_Custom_Controls.UserControls
             {
                 if (Value == FirstValue)
                     return FirstState;
-                else if (Value == SecondValue)
+                if (Value == SecondValue)
                 {
                     return SecondState;
                 }
-                else if (Value == ThirdValue)
+                if (Value == ThirdValue)
                 {
                     return ThirdState;
                 }
-                else
-                {
-                    return string.Empty;
-                }
+
+                return string.Empty;
             }
         }
 
@@ -124,7 +126,7 @@ namespace Winform_Custom_Controls.UserControls
         [Description("텍스트의 여러 줄을 사용합니다."), Category("CheckBox")]
         public override bool Multiline
         {
-            get { return base.Multiline; }
+            get => base.Multiline;
             set
             {
                 base.Multiline = value;
@@ -153,7 +155,7 @@ namespace Winform_Custom_Controls.UserControls
         [Category("CheckBoxValues")]
         public int? Value
         {
-            set { _value = value; }
+            set => _value = value;
             get
             {
                 if (_value.HasValue && _value.Value == FirstValue)

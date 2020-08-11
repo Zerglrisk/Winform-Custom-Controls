@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.Inherits
 {
-    public class Separator : Panel
+    public sealed class Separator : Panel
     {
         [Category("Appearance"), DefaultValue(typeof(Padding), "0,0,0,0")]
         public Padding SeparatorPadding { get; set; }
