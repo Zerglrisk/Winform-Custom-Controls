@@ -18,12 +18,12 @@ namespace Winform_Custom_Controls.Inherits
         private Color _borderColor;
 
         private const int WM_PAINT = 0xF;
-        private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth; // SystemInformation.VerticalScrollBarWidth; //Also Can This
+        private readonly int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth; // SystemInformation.VerticalScrollBarWidth; //Also Can This
         [Category("Appearance"), Browsable(true), Description("Border Color."), DefaultValue(typeof(Color), "DimGray")]
         public Color BorderColor
         {
-            get { return this._borderColor; }
-            set { _drawBorder = this._borderColor = value; }
+            get => this._borderColor;
+            set => _drawBorder = this._borderColor = value;
         }
         [Category("Appearance"), Description("When Mouse Over Chnage Border Color. It doesn't work the controls is disabled.")]
         [Browsable(true)]
@@ -39,15 +39,15 @@ namespace Winform_Custom_Controls.Inherits
         [Category("Appearance"), Browsable(true), Description("Background Color For Default Color. it means enabled is false."), DefaultValue(typeof(Color), "Window")]
         public Color BackDefaultColor
         {
-            get { return this._backDefaultColor; }
-            set { this.BackColor = this._backDefaultColor = value; }
+            get => this._backDefaultColor;
+            set => this.BackColor = this._backDefaultColor = value;
         }
 
         [Browsable(false)]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         //[Browsable(true)]
