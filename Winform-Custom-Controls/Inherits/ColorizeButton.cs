@@ -58,7 +58,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "ControlLight")]
         public override Color BackColor
         {
-            get { return base.BackColor; }
+            get => base.BackColor;
             set
             {
                 if (value == Color.Empty)
@@ -77,7 +77,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "204, 204, 204")]
         public Color BackDisabledColor
         {
-            get { return _backDisabledColor; }
+            get => _backDisabledColor;
             set
             {
                 _backDisabledColor = value;
@@ -94,7 +94,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "ButtonShadow")]
         public Color BorderColor
         {
-            get { return _borderColor;}
+            get => _borderColor;
             set
             {
                 if (value == Color.Empty)
@@ -141,7 +141,7 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "191, 191, 191")]
         public Color BorderDisabledColor
         {
-            get { return _borderDisabledColor; }
+            get => _borderDisabledColor;
             set
             {
                 _borderDisabledColor = value;

@@ -47,25 +47,22 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Color), "204, 228, 247")]
         public Color MouseDownColor { get; set; }
 
-        private Color _backcolor;
+        private Color _backColor;
         [Category("Back Colors")]
         [DefaultValue(typeof(Color), "ControlLight")]
         public override Color BackColor
         {
-            get
-            {
-                return _backcolor;
-            }
+            get => _backColor;
             set
             {
                 if (value == Color.Empty)
                 {
-                    btnColor.BackColor = _backcolor = SystemColors.ControlLight;
+                    btnColor.BackColor = _backColor = SystemColors.ControlLight;
                     //throw new ArgumentNullException("Color.Empty","BackColor Cannot Be Empty");
                 }
                 else
                 {
-                    btnColor.BackColor = _backcolor = value;
+                    btnColor.BackColor = _backColor = value;
                 }
                 
             }
@@ -77,10 +74,7 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Color), "204, 204, 204")]
         public Color BackDisabledColor
         {
-            get
-            {
-                return _backDisabledColor;
-            }
+            get => _backDisabledColor;
             set
             {
                 _backDisabledColor = value;
@@ -104,7 +98,7 @@ namespace Winform_Custom_Controls.UserControls
         [Category("ForeColors"),DefaultValue(typeof(Color), "ControlText")]
         public override Color ForeColor
         {
-            get { return _foreColor;}
+            get => _foreColor;
             set
             {
                 if (value == Color.Empty)
@@ -134,7 +128,7 @@ namespace Winform_Custom_Controls.UserControls
         [Category("ForeColors"), DefaultValue(typeof(Color), "GrayText")]
         public Color ForeDisabledColor
         {
-            get { return _foreDisabledColor;}
+            get => _foreDisabledColor;
             set
             {
                 _foreDisabledColor = value;
@@ -150,7 +144,7 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Color), "ButtonShadow")]
         public Color BorderColor
         {
-            get { return _borderColor; }
+            get => _borderColor;
             set
             {
                 if (value == Color.Empty)
@@ -179,7 +173,7 @@ namespace Winform_Custom_Controls.UserControls
         [DefaultValue(typeof(Padding), "1,1,1,1")]
         public Padding BorderSize
         {
-            get { return _borderSize; }
+            get => _borderSize;
             set
             {
                 _borderSize = value;
@@ -206,8 +200,8 @@ namespace Winform_Custom_Controls.UserControls
         [Bindable(true)]
         public override string Text
         {
-            get { return base.Text; }
-            set { label1.Text =  base.Text = value; }
+            get => base.Text;
+            set => label1.Text =  base.Text = value;
         }
        
 

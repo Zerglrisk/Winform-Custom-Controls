@@ -6,10 +6,8 @@ using System.Windows.Forms;
 
 namespace Winform_Custom_Controls.Inherits
 {
-    public class GradientPanel : System.Windows.Forms.Panel
+    public sealed class GradientPanel : System.Windows.Forms.Panel
     {
-        private System.Drawing.Color startColor;
-        private System.Drawing.Color endColor;
         private System.ComponentModel.IContainer components = null;
         public GradientPanel()
         {
@@ -32,24 +30,12 @@ namespace Winform_Custom_Controls.Inherits
 
         [Category("Appearance"), Description("Gradient Color When Start"),
          Browsable(true), DefaultValue(typeof(System.Drawing.Color), "Control")]
-        public System.Drawing.Color PageStartColor
-        {
-            get { return startColor; }
-            set
-            {
-                startColor = value;
-            }
-        }
+        public System.Drawing.Color PageStartColor { get; set; }
+
         [Category("Appearance"), Description("Gradient Color When End"),
          Browsable(true), DefaultValue(typeof(System.Drawing.Color), "Control")]
-        public System.Drawing.Color PageEndColor
-        {
-            get { return endColor; }
-            set
-            {
-                endColor = value;
-            }
-        }
+        public System.Drawing.Color PageEndColor { get; set; }
+
         [Category("Appearance"), Browsable(true), Description("Gradient Mode"), DefaultValue(typeof(System.Drawing.Drawing2D.LinearGradientMode), "Vertical")]
         public System.Drawing.Drawing2D.LinearGradientMode GradientMode { get; set; }
         #endregion

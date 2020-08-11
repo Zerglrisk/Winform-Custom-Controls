@@ -206,7 +206,7 @@ namespace Winform_Custom_Controls.Inherits
         [Description("Sets the text of the watermark")]
         public string WaterMark
         {
-            get { return this._waterMarkText; }
+            get => this._waterMarkText;
             set
             {
                 this._waterMarkText = value;
@@ -218,7 +218,7 @@ namespace Winform_Custom_Controls.Inherits
         [Description("When the control gaines focus, this color will be used as the watermark's forecolor")]
         public Color WaterMarkActiveForeColor
         {
-            get { return this._waterMarkActiveColor; }
+            get => this._waterMarkActiveColor;
 
             set
             {
@@ -231,7 +231,7 @@ namespace Winform_Custom_Controls.Inherits
         [Description("When the control looses focus, this color will be used as the watermark's forecolor")]
         public Color WaterMarkForeColor
         {
-            get { return this._waterMarkColor; }
+            get => this._waterMarkColor;
 
             set
             {
@@ -244,10 +244,7 @@ namespace Winform_Custom_Controls.Inherits
         [Description("The font used on the watermark. Default is the same as the control")]
         public Font WaterMarkFont
         {
-            get
-            {
-                return this.waterMarkFont;
-            }
+            get => this.waterMarkFont;
 
             set
             {

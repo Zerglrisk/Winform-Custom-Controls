@@ -32,8 +32,8 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "Window")]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "Gray")]
         public Color BorderColor
         {
-            get { return _borderColor; }
-            set { _drawBorder = _borderColor = value; }
+            get => _borderColor;
+            set => _drawBorder = _borderColor = value;
         }
         [Category("Appearance"),Description("When Mouse Over Chnage Border Color. It doesn't work the controls is disabled.")]
         [Browsable(true)]

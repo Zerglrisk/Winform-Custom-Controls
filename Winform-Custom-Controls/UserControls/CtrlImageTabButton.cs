@@ -17,61 +17,26 @@ namespace Winform_Custom_Controls.UserControls
         //외부이벤트 발생용
         public event EventHandlers.BtnClickEventHandler BtnClick;
 
-        private Image _checkimage;
-        public Image CheckImage
-        {
-            get
-            {
-                return _checkimage;
-            }
-            set
-            {
-                _checkimage = value;
-            }
-        }
+        public Image CheckImage { get; set; }
 
-        private Image _baseimage;
-        public Image BaseImage
-        {
-            get
-            {
-                return _baseimage;
-            }
-            set
-            {
-                _baseimage = value;
-            }
-        }
+        public Image BaseImage { get; set; }
 
         private bool _selected= false;
         public bool Selected
         {
-            get
-            {
-                return _selected;
-            }
+            get => _selected;
             set
             {
                 _selected = value;
 
-                if (value)
-                {
-                    btnBase.BackgroundImage = _checkimage;
-                }
-                else
-                {
-                    btnBase.BackgroundImage = _baseimage;
-                }
+                btnBase.BackgroundImage = value ? CheckImage : BaseImage;
             }
         }
 
         private string _text = "";
         public string Title
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 _text = value;
@@ -97,10 +62,7 @@ namespace Winform_Custom_Controls.UserControls
 
         private void btnBase_Click(object sender, EventArgs e)
         {
-            if (BtnClick != null)
-            {
-                BtnClick(sender, e);
-            }
+            BtnClick?.Invoke(sender, e);
         }
     }
 }

@@ -12,7 +12,7 @@ using Winform_Custom_Controls.enums;
 
 namespace Winform_Custom_Controls.Inherits
 {
- public   class TextBox : System.Windows.Forms.TextBox
+ public class TextBox : System.Windows.Forms.TextBox
     {
         private Color _drawColor;
         [DllImport("user32.dll")]
@@ -31,7 +31,7 @@ namespace Winform_Custom_Controls.Inherits
             BackDisabledColor = SystemColors.Control;
             BackDefaultColor = SystemColors.Window;
             BorderColor = ColorTranslator.FromHtml("#7A7A7A");
-            BorderFocusColor = SystemColors.Highlight;
+            BorderFocusColor = SystemColors.MenuHighlight;
             _drawColor = BackColor = BackDefaultColor;
             EnableBorderFocusColor = true;
             AutoSize = false;
@@ -52,14 +52,8 @@ namespace Winform_Custom_Controls.Inherits
         [Browsable(true)]
         public override bool AutoSize
         {
-            get
-            {
-                return base.AutoSize;
-            }
-            set
-            {
-                base.AutoSize = value;
-            }
+            get => base.AutoSize;
+            set => base.AutoSize = value;
         }
 
         [Category("Appearance"),
@@ -80,8 +74,8 @@ namespace Winform_Custom_Controls.Inherits
         [DefaultValue(typeof(Color), "Window")]
         public Color BackDefaultColor
         {
-            get { return _backDefaultColor; }
-            set { this.BackColor = _backDefaultColor = value; }
+            get => _backDefaultColor;
+            set => this.BackColor = _backDefaultColor = value;
         }
 
         [Category("Appearance"),
@@ -99,8 +93,8 @@ namespace Winform_Custom_Controls.Inherits
         [Browsable(false)]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
         [Category("Behavior"), Description("Usable BorderFocusColor"), DefaultValue(true), Browsable(true)]
