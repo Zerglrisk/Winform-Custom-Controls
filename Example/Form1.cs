@@ -23,5 +23,10 @@ namespace Example
 
         }
 
+        private void checkBoxListView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            var checkedIndices = checkBoxListView1.CheckedIndices.Cast<int>().ToList();
+            lbl_checkedListView.Text = string.Join(", ", checkedIndices);
+        }
     }
 }

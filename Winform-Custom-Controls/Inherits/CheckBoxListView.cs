@@ -22,14 +22,24 @@ namespace Winform_Custom_Controls.Inherits
         {
             this.CheckBoxes = true;
             this.OwnerDraw = true;
+            this.FullRowSelect = true;
+            this.GridLines = true;
+            this.HideSelection = false;
+            this.MultiSelect = false;
             this.View = View.Details;
+
+            //Init Custom Properties
+            this.EnableColumnSort = true;
 
             // Set the ListViewItemSorter property to a new ListViewItemComparer 
             // object. 
             lvwColumnSorter = new CustomListViewColumnSorter();
             this.ListViewItemSorter = lvwColumnSorter;
         }
-        
+
+        [Category("Behavior")]
+        [DefaultValue(true)]
+        public bool EnableColumnSort { get; set; }
         //if use this Row Check Box not draw
         //[DefaultValue(true)]
         //public new bool CheckBoxes { get; private set; }
@@ -111,46 +121,45 @@ namespace Winform_Custom_Controls.Inherits
             else
             {
                 //https://docs.microsoft.com/ko-kr/troubleshoot/dotnet/csharp/sort-listview-by-column
-
-                var beforeSortColumn = lvwColumnSorter.SortColumn;
-                //Sorting
-                if (e.Column == lvwColumnSorter.SortColumn)
+                if (EnableColumnSort)
                 {
-                    var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
-
-                    // Reverse the current sort direction for this column.
-                    if (lvwColumnSorter.Order == SortOrder.Ascending)
+                    var beforeSortColumn = lvwColumnSorter.SortColumn;
+                    //Sorting
+                    if (e.Column == lvwColumnSorter.SortColumn)
                     {
-                        lvwColumnSorter.Order = SortOrder.Descending;
-                        this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▼";
+                        var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
+
+                        // Reverse the current sort direction for this column.
+                        if (lvwColumnSorter.Order == SortOrder.Ascending)
+                        {
+                            lvwColumnSorter.Order = SortOrder.Descending;
+                            this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▼";
+                        }
+                        else
+                        {
+                            lvwColumnSorter.Order = SortOrder.Ascending;
+                            this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▲";
+                        }
                     }
                     else
                     {
+                        // Set the column number that is to be sorted; default to ascending.
+                        lvwColumnSorter.SortColumn = e.Column;
                         lvwColumnSorter.Order = SortOrder.Ascending;
+
+                        var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
                         this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▲";
+
+                        //remove other's sort
+                        if (beforeSortColumn > -1 && beforeSortColumn < this.Columns.Count)
+                        {
+                            this.Columns[beforeSortColumn].Text = this.Columns[beforeSortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
+                        }
                     }
+                    // Call the sort method to manually sort. 
+                    this.Sort();
                 }
-                else
-                {
-                    // Set the column number that is to be sorted; default to ascending.
-                    lvwColumnSorter.SortColumn = e.Column;
-                    lvwColumnSorter.Order = SortOrder.Ascending;
-
-                    var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
-                    this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▲";
-
-                    //remove other's sort
-                    if (beforeSortColumn > -1 && beforeSortColumn < this.Columns.Count)
-                    {
-                        this.Columns[beforeSortColumn].Text = this.Columns[beforeSortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
-                    }
-                }
-
             }
-
-            // Call the sort method to manually sort. 
-            this.Sort();
-            
         }
 
     }
