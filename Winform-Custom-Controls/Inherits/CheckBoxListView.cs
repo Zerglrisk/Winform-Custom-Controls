@@ -17,12 +17,17 @@ namespace Winform_Custom_Controls.Inherits
     /// <see cref="https://crazylobelia.tistory.com/29"/>
     public class CheckBoxListView : ListView
     {
-        private int sortColumn = -1;
+        private CustomListViewColumnSorter lvwColumnSorter;
         public CheckBoxListView()
         {
             this.CheckBoxes = true;
             this.OwnerDraw = true;
             this.View = View.Details;
+
+            // Set the ListViewItemSorter property to a new ListViewItemComparer 
+            // object. 
+            lvwColumnSorter = new CustomListViewColumnSorter();
+            this.ListViewItemSorter = lvwColumnSorter;
         }
         
         //if use this Row Check Box not draw
@@ -105,49 +110,48 @@ namespace Winform_Custom_Controls.Inherits
             }
             else
             {
+                //https://docs.microsoft.com/ko-kr/troubleshoot/dotnet/csharp/sort-listview-by-column
+
+                var beforeSortColumn = lvwColumnSorter.SortColumn;
                 //Sorting
-                if (e.Column != sortColumn)
+                if (e.Column == lvwColumnSorter.SortColumn)
                 {
-                    // Set the sort column to the new column.
-                    this.sortColumn = e.Column;
-                    // Set the sort order to ascending by default.
-                    this.Sorting = SortOrder.Ascending;
+                    var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
 
-                    var title = this.Columns[sortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
-                    this.Columns[sortColumn].Text = title + " ▲";
-                }
-                else
-                {
-                   var title = this.Columns[sortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
-
-                    // Determine what the last sort order was and change it. 
-                    if (this.Sorting == SortOrder.Ascending)
+                    // Reverse the current sort direction for this column.
+                    if (lvwColumnSorter.Order == SortOrder.Ascending)
                     {
-                        this.Sorting = SortOrder.Descending;
-                        this.Columns[sortColumn].Text = title + " ▼";
+                        lvwColumnSorter.Order = SortOrder.Descending;
+                        this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▼";
                     }
                     else
                     {
-                        this.Sorting = SortOrder.Ascending;
-                        this.Columns[sortColumn].Text = title + " ▲"; 
+                        lvwColumnSorter.Order = SortOrder.Ascending;
+                        this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▲";
+                    }
+                }
+                else
+                {
+                    // Set the column number that is to be sorted; default to ascending.
+                    lvwColumnSorter.SortColumn = e.Column;
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+
+                    var title = this.Columns[lvwColumnSorter.SortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
+                    this.Columns[lvwColumnSorter.SortColumn].Text = title + " ▲";
+
+                    //remove other's sort
+                    if (beforeSortColumn > -1 && beforeSortColumn < this.Columns.Count)
+                    {
+                        this.Columns[beforeSortColumn].Text = this.Columns[beforeSortColumn].Text.Replace(" ▲", "").Replace(" ▼", "");
                     }
                 }
 
-                //remove other's sort
-                for(var i = 0; i < this.Columns.Count; ++i)
-                {
-                    if(i != sortColumn)
-                    {
-                        this.Columns[i].Text = this.Columns[i].Text.Replace(" ▲", "").Replace(" ▼", "");
-                    }
-                }
             }
 
             // Call the sort method to manually sort. 
             this.Sort();
-            // Set the ListViewItemSorter property to a new ListViewItemComparer 
-            // object. 
-            this.ListViewItemSorter = new CustomListViewComparer(e.Column, this.Sorting);
+            
         }
+
     }
 }
