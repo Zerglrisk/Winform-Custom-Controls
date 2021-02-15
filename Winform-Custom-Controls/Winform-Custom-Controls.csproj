@@ -50,11 +50,15 @@
     <Compile Include="Core\Data\LayoutUtils.cs" />
     <Compile Include="Core\Data\WindowGraphics.cs" />
     <Compile Include="Core\Data\WindowFormsUtils.cs" />
+    <Compile Include="Models\CustomListViewComparer.cs" />
     <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
     <Compile Include="EventHandlers.cs" />
     <Compile Include="EventTemplates.cs" />
     <Compile Include="Inherits\BorderComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inherits\CheckBoxListView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Inherits\ColorizeButton.cs">
@@ -71,6 +75,12 @@
     </Compile>
     <Compile Include="Inherits\ContentLabel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inherits\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inherits\SplitButton.designer.cs">
+      <DependentUpon>SplitButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Inherits\TextBox.cs">
       <SubType>Component</SubType>
@@ -90,8 +100,8 @@
     <Compile Include="Inherits\Separator.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\ComboBoxItem.cs" />
-    <Compile Include="Model\ComboBoxItems.cs" />
+    <Compile Include="Models\ComboBoxItem.cs" />
+    <Compile Include="Models\ComboBoxItems.cs" />
     <Compile Include="UserControls\CtrlImageTabButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -129,6 +139,9 @@
     <Compile Include="WinAPI.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Inherits\SplitButton.resx">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CtrlImageTabButton.resx">
       <DependentUpon>CtrlImageTabButton.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,7 +15,7 @@ namespace Winform_Custom_Controls.UserControls
         {
             InitializeComponent();
 
-            BorderSize = new Padding(1);
+            BorderSize = new Padding(1); 
             BorderColor = SystemColors.ButtonShadow;
             BackColor = SystemColors.ControlLight;
             HoverColor = ColorTranslator.FromHtml("#E5F1FB");

@@ -14,5 +14,6 @@ namespace Winform_Custom_Controls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public delegate void BtnClickEventHandler(object sender, EventArgs e);
+        public delegate void OnItemChanged(object sender, EventArgs e);
     }
 }

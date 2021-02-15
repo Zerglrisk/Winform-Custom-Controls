@@ -30,6 +30,7 @@ namespace Example
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,6 +41,14 @@ namespace Example
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.test1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.test2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splitButton1 = new Winform_Custom_Controls.Inherits.SplitButton();
+            this.checkBoxListView1 = new Winform_Custom_Controls.Inherits.CheckBoxListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ContentLabel2 = new Winform_Custom_Controls.Inherits.ContentLabel();
             this.ContentLabel1 = new Winform_Custom_Controls.Inherits.ContentLabel();
             this.colorizeButtonTest2 = new Winform_Custom_Controls.Inherits.ColorizeButton();
@@ -61,6 +70,8 @@ namespace Example
             this.textBox2 = new Winform_Custom_Controls.Inherits.TextBox();
             this.threeWayCheckBox1 = new Winform_Custom_Controls.UserControls.ThreeWayCheckBox();
             this._textCheckBox1 = new Winform_Custom_Controls.UserControls.CtrlTextCheckBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,7 +146,7 @@ namespace Example
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(492, 320);
+            this.button2.Location = new System.Drawing.Point(573, 292);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(126, 23);
             this.button2.TabIndex = 24;
@@ -151,6 +162,73 @@ namespace Example
             this.label3.TabIndex = 28;
             this.label3.Text = "label3tttttttttttttttttttttttt";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.test1ToolStripMenuItem,
+            this.test2ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 48);
+            // 
+            // test1ToolStripMenuItem
+            // 
+            this.test1ToolStripMenuItem.Name = "test1ToolStripMenuItem";
+            this.test1ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.test1ToolStripMenuItem.Text = "test1";
+            // 
+            // test2ToolStripMenuItem
+            // 
+            this.test2ToolStripMenuItem.Name = "test2ToolStripMenuItem";
+            this.test2ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.test2ToolStripMenuItem.Text = "test2";
+            // 
+            // splitButton1
+            // 
+            this.splitButton1.ClickedImage = "Clicked";
+            this.splitButton1.ContextMenuStrip = this.contextMenuStrip1;
+            this.splitButton1.DisabledImage = "Disabled";
+            this.splitButton1.FocusedImage = "Focused";
+            this.splitButton1.HoverImage = "Hover";
+            this.splitButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.splitButton1.ImageKey = "Normal";
+            this.splitButton1.Location = new System.Drawing.Point(593, 365);
+            this.splitButton1.Name = "splitButton1";
+            this.splitButton1.NormalImage = "Normal";
+            this.splitButton1.Size = new System.Drawing.Size(163, 23);
+            this.splitButton1.TabIndex = 32;
+            this.splitButton1.Text = "splitButton1";
+            this.splitButton1.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxListView1
+            // 
+            this.checkBoxListView1.CheckBoxes = true;
+            this.checkBoxListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.checkBoxListView1.FullRowSelect = true;
+            this.checkBoxListView1.HideSelection = false;
+            this.checkBoxListView1.Location = new System.Drawing.Point(311, 274);
+            this.checkBoxListView1.Name = "checkBoxListView1";
+            this.checkBoxListView1.OwnerDraw = true;
+            this.checkBoxListView1.Size = new System.Drawing.Size(210, 164);
+            this.checkBoxListView1.TabIndex = 31;
+            this.checkBoxListView1.UseCompatibleStateImageBehavior = false;
+            this.checkBoxListView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 25;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "col1";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "col2";
+            // 
             // ContentLabel2
             // 
             this.ContentLabel2.AutoSize = true;
@@ -158,9 +236,9 @@ namespace Example
             this.ContentLabel2.IsRequire = true;
             this.ContentLabel2.Location = new System.Drawing.Point(446, 179);
             this.ContentLabel2.Name = "ContentLabel2";
-            this.ContentLabel2.Size = new System.Drawing.Size(217, 19);
+            this.ContentLabel2.Size = new System.Drawing.Size(230, 19);
             this.ContentLabel2.TabIndex = 30;
-            this.ContentLabel2.Text = "ContentLabel15555555555";
+            this.ContentLabel2.Text = "ContentLabel15555555555 ";
             // 
             // ContentLabel1
             // 
@@ -170,14 +248,14 @@ namespace Example
             this.ContentLabel1.Name = "ContentLabel1";
             this.ContentLabel1.Size = new System.Drawing.Size(100, 125);
             this.ContentLabel1.TabIndex = 29;
-            this.ContentLabel1.Text = "ContentLabel15555555555";
+            this.ContentLabel1.Text = "ContentLabel15555555555 ";
             // 
             // colorizeButtonTest2
             // 
             this.colorizeButtonTest2.BorderFocusCuesColor = System.Drawing.Color.Red;
             this.colorizeButtonTest2.BorderHoverSize = new System.Windows.Forms.Padding(4);
             this.colorizeButtonTest2.BorderSize = new System.Windows.Forms.Padding(4);
-            this.colorizeButtonTest2.Location = new System.Drawing.Point(492, 291);
+            this.colorizeButtonTest2.Location = new System.Drawing.Point(573, 263);
             this.colorizeButtonTest2.Name = "colorizeButtonTest2";
             this.colorizeButtonTest2.Size = new System.Drawing.Size(126, 23);
             this.colorizeButtonTest2.TabIndex = 27;
@@ -288,7 +366,7 @@ namespace Example
             this.imageTabButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.imageTabButton1.BaseImage = null;
             this.imageTabButton1.CheckImage = null;
-            this.imageTabButton1.Location = new System.Drawing.Point(492, 235);
+            this.imageTabButton1.Location = new System.Drawing.Point(573, 207);
             this.imageTabButton1.Margin = new System.Windows.Forms.Padding(0);
             this.imageTabButton1.Name = "imageTabButton1";
             this.imageTabButton1.Selected = false;
@@ -388,11 +466,27 @@ namespace Example
             this._textCheckBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this._textCheckBox1.TrueText = "Yes";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "121",
+            "12131`"});
+            this.comboBox1.Location = new System.Drawing.Point(419, 221);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(144, 20);
+            this.comboBox1.TabIndex = 34;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.splitButton1);
+            this.Controls.Add(this.checkBoxListView1);
             this.Controls.Add(this.ContentLabel2);
             this.Controls.Add(this.ContentLabel1);
             this.Controls.Add(this.label3);
@@ -426,6 +520,7 @@ namespace Example
             this.Controls.Add(this._textCheckBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -465,6 +560,15 @@ namespace Example
         private System.Windows.Forms.Label label3;
         private ContentLabel ContentLabel1;
         private ContentLabel ContentLabel2;
+        private CheckBoxListView checkBoxListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private SplitButton splitButton1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem test1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem test2ToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
