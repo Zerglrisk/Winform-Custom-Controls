@@ -37,7 +37,11 @@ namespace Winform_Custom_Controls.Inherits
             AutoSize = false;
             TextMode = TextMode.Text;
             //this.BorderStyle = BorderStyle.FixedSingle;
+
+            _cursorPosition = 0;
         }
+
+        private int _cursorPosition;
         //[Category("Appearance"),
         // Description("편집 컨트롤에 테두리를 표시할지 여부를 나타냅니다.")]
         //[Browsable(true)]
@@ -104,6 +108,7 @@ namespace Winform_Custom_Controls.Inherits
 
         protected override void WndProc(ref Message m)
         {
+            //WM_PRINT
             //if (m.Msg == 791) return;
             //base.WndProc(ref m);
 
@@ -121,6 +126,7 @@ namespace Winform_Custom_Controls.Inherits
 
             base.WndProc(ref m);
 
+            //WM_NCPAINT
             if (m.Msg == 133)
             {
                 var dc = GetWindowDC(Handle);
@@ -133,6 +139,25 @@ namespace Winform_Custom_Controls.Inherits
 
                 }
                 ReleaseDC(this.Handle, dc);
+            }
+            //WM_PASTE
+            if (m.Msg == 770)
+            {
+                //block the Paste
+                var digitStr = "";
+                if (!string.IsNullOrWhiteSpace(this.Text))
+                {
+                    var regex = new Regex(@"[^\d]");
+                    digitStr = regex.Replace(this.Text, "");
+                }
+                if (this.TextMode == TextMode.Number )
+                {
+                    this.Text = digitStr;
+                }
+                else if (this.TextMode == TextMode.Currency)
+                {
+                    this.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:#,##.##}", double.Parse(Regex.Replace(!string.IsNullOrEmpty(digitStr) ? digitStr : "0", @"[^\d]", string.Empty)));
+                }
             }
         }
 
@@ -198,8 +223,32 @@ namespace Winform_Custom_Controls.Inherits
                 {
                     e.Handled = true;
                 }
-                //소수점 안적히는 오류 수정하기
+                // If double value over handled
+
+                var lengh = this.Text.Length;
+                _cursorPosition = this.SelectionLength;// this.Text.Length; 
+                var curLengh = this.SelectionStart;
+                //[Need Fix] 소수점 안적히는 오류 수정하기
                 this.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:#,##.##}", double.Parse(Regex.Replace(!string.IsNullOrEmpty(this.Text) ? this.Text : "0", @"[^\d]", string.Empty)));
+                //수정본
+                //var digitText = Regex.Replace(!string.IsNullOrEmpty(this.Text) ? this.Text : "", @"[^\d]", string.Empty);
+                //var resultText = string.Empty;
+                //for (var i = 0; i < digitText.Length; ++i)
+                //{
+                //    resultText += digitText[i];
+
+                //    if (i != 0 && (i+1) % 3 == 0)
+                //    {
+                //        resultText += ",";
+                //    }
+                //}
+                //this.Text = resultText;
+
+                var subtract = this.Text.Length - lengh;
+
+                this.SelectionLength = _cursorPosition + subtract;
+                this.SelectionStart = curLengh + subtract;
+
             }
         }
     }

@@ -20,7 +20,7 @@ namespace Example
             checkBoxListView1.Items.Add(new ListViewItem(new String[] { "true", "test1", "test1-1" }));
             checkBoxListView1.Items.Add(new ListViewItem(new String[] { "", "test2", "test2-1" }));
             checkBoxListView1.Items.Add(new ListViewItem(new String[] { "", "test3", "test3-1" }));
-
+            
         }
 
         private void checkBoxListView1_ItemChecked(object sender, ItemCheckedEventArgs e)

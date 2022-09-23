@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Winform_Custom_Controls</RootNamespace>
     <AssemblyName>Winform-Custom-Controls</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Zerglrisk.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,6 +58,9 @@
     <Compile Include="Core\Data\LayoutUtils.cs" />
     <Compile Include="Core\Data\WindowGraphics.cs" />
     <Compile Include="Core\Data\WindowFormsUtils.cs" />
+    <Compile Include="Inherits\ColorizeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\CustomListViewColumnSorter.cs" />
     <Compile Include="enums\FrontHeaderType.cs" />
     <Compile Include="enums\TextMode.cs" />
@@ -61,7 +72,7 @@
     <Compile Include="Inherits\CheckBoxListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Inherits\ColorizeButton.cs">
+    <Compile Include="Inherits\ColorizeTabButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Inherits\CTextBox.cs">
@@ -136,7 +147,178 @@
     <Compile Include="Inherits\ThreeWayCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WinAPI.cs" />
+    <Compile Include="WinAPI\enums\CursorPositions.cs" />
+    <Compile Include="WinAPI\enums\PFM.cs" />
+    <Compile Include="WinAPI\enums\WindowsMessages.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.CFE.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.CFM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.CHARFORMAT2W.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.CHARRANGE.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ECO.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ECOOP.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.EDITSTREAM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.EDITSTREAMCALLBACK.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.EM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.EN.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ENDROPFILES.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ENM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ES.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.FINDTEXTW.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.GETTEXTEX.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.GETTEXTLENGTHEX.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.GT.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.GTL.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ICM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.IRichEditOleCallback.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ITextDocument.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.ITextRange.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.MAX_TAB_STOPS.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.PARAFORMAT.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.PFA.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.PFM.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.PFN.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.RECO.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.REQRESIZE.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.SCF.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.SEL.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.SELCHANGE.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.SF.cs" />
+    <Compile Include="WinAPI\Richedit\Interop.TEXTRANGE.cs" />
+    <Compile Include="WinAPI\RichTextBoxApis.cs" />
+    <Compile Include="WinAPI\structs\PARAPORMAT2.cs" />
+    <Compile Include="WinAPI\TextBoxAPis.cs" />
+    <Compile Include="WinAPI\User32\Interop.ACCEL.cs" />
+    <Compile Include="WinAPI\User32\Interop.AcceleratorFlags.cs" />
+    <Compile Include="WinAPI\User32\Interop.AdjustWindowRectEx.cs" />
+    <Compile Include="WinAPI\User32\Interop.ARW.cs" />
+    <Compile Include="WinAPI\User32\Interop.Atom.cs" />
+    <Compile Include="WinAPI\User32\Interop.BDR.cs" />
+    <Compile Include="WinAPI\User32\Interop.BF.cs" />
+    <Compile Include="WinAPI\User32\Interop.BM.cs" />
+    <Compile Include="WinAPI\User32\Interop.BN.cs" />
+    <Compile Include="WinAPI\User32\Interop.BS.cs" />
+    <Compile Include="WinAPI\User32\Interop.CallWindowProcW.cs" />
+    <Compile Include="WinAPI\User32\Interop.CB.cs" />
+    <Compile Include="WinAPI\User32\Interop.CBN.cs" />
+    <Compile Include="WinAPI\User32\Interop.CBS.cs" />
+    <Compile Include="WinAPI\User32\Interop.CF.cs" />
+    <Compile Include="WinAPI\User32\Interop.CLIENTCREATESTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.COLOR.cs" />
+    <Compile Include="WinAPI\User32\Interop.COPYDATASTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.CopyImage.cs" />
+    <Compile Include="WinAPI\User32\Interop.CS.cs" />
+    <Compile Include="WinAPI\User32\Interop.CWP.cs" />
+    <Compile Include="WinAPI\User32\Interop.DCX.cs" />
+    <Compile Include="WinAPI\User32\Interop.DESKTOP.cs" />
+    <Compile Include="WinAPI\User32\Interop.DEVMODEW.cs" />
+    <Compile Include="WinAPI\User32\Interop.DF.cs" />
+    <Compile Include="WinAPI\User32\Interop.DFC.cs" />
+    <Compile Include="WinAPI\User32\Interop.DFCS.cs" />
+    <Compile Include="WinAPI\User32\Interop.DialogItemID.cs" />
+    <Compile Include="WinAPI\User32\Interop.DLGC.cs" />
+    <Compile Include="WinAPI\User32\Interop.DM.cs" />
+    <Compile Include="WinAPI\User32\Interop.DPI_AWARENESS.cs" />
+    <Compile Include="WinAPI\User32\Interop.DPI_AWARENESS_CONTEXT.cs" />
+    <Compile Include="WinAPI\User32\Interop.DrawIconEx.cs" />
+    <Compile Include="WinAPI\User32\Interop.DRAWITEMSTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.DRAWTEXTPARAMS.cs" />
+    <Compile Include="WinAPI\User32\Interop.DT.cs" />
+    <Compile Include="WinAPI\User32\Interop.EC.cs" />
+    <Compile Include="WinAPI\User32\Interop.EDGE.cs" />
+    <Compile Include="WinAPI\User32\Interop.EM.cs" />
+    <Compile Include="WinAPI\User32\Interop.EN.cs" />
+    <Compile Include="WinAPI\User32\Interop.ENUM.cs" />
+    <Compile Include="WinAPI\User32\Interop.ES.cs" />
+    <Compile Include="WinAPI\User32\Interop.ESB.cs" />
+    <Compile Include="WinAPI\User32\Interop.EVENTMSG.cs" />
+    <Compile Include="WinAPI\User32\Interop.EXTLOGFONTW.cs" />
+    <Compile Include="WinAPI\User32\Interop.GA.cs" />
+    <Compile Include="WinAPI\User32\Interop.GCL.cs" />
+    <Compile Include="WinAPI\User32\Interop.GetSystemMetrics.cs" />
+    <Compile Include="WinAPI\User32\Interop.GR.cs" />
+    <Compile Include="WinAPI\User32\Interop.GW.cs" />
+    <Compile Include="WinAPI\User32\Interop.GWL.cs" />
+    <Compile Include="WinAPI\User32\Interop.HARDWAREINPUT.cs" />
+    <Compile Include="WinAPI\User32\Interop.HBMMENU.cs" />
+    <Compile Include="WinAPI\User32\Interop.HC.cs" />
+    <Compile Include="WinAPI\User32\Interop.HDLAYOUT.cs" />
+    <Compile Include="WinAPI\User32\Interop.HELPINFO.cs" />
+    <Compile Include="WinAPI\User32\Interop.HELPINFOENUM.cs" />
+    <Compile Include="WinAPI\User32\Interop.HIGHCONTRASTW.cs" />
+    <Compile Include="WinAPI\User32\Interop.HT.cs" />
+    <Compile Include="WinAPI\User32\Interop.ICON.cs" />
+    <Compile Include="WinAPI\User32\Interop.ID.cs" />
+    <Compile Include="WinAPI\User32\Interop.INPUT.cs" />
+    <Compile Include="WinAPI\User32\Interop.INPUTENUM.cs" />
+    <Compile Include="WinAPI\User32\Interop.KEYBDINPUT.cs" />
+    <Compile Include="WinAPI\User32\Interop.KEYEVENTF.cs" />
+    <Compile Include="WinAPI\User32\Interop.LB.cs" />
+    <Compile Include="WinAPI\User32\Interop.LBN.cs" />
+    <Compile Include="WinAPI\User32\Interop.LBS.cs" />
+    <Compile Include="WinAPI\User32\Interop.LWA.cs" />
+    <Compile Include="WinAPI\User32\Interop.MA.cs" />
+    <Compile Include="WinAPI\User32\Interop.MapWindowPoints.cs" />
+    <Compile Include="WinAPI\User32\Interop.MB.cs" />
+    <Compile Include="WinAPI\User32\Interop.MCM.cs" />
+    <Compile Include="WinAPI\User32\Interop.MDITILE.cs" />
+    <Compile Include="WinAPI\User32\Interop.MEASUREITEMSTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.MENUITEMINFOW.cs" />
+    <Compile Include="WinAPI\User32\Interop.MF.cs" />
+    <Compile Include="WinAPI\User32\Interop.MFS.cs" />
+    <Compile Include="WinAPI\User32\Interop.MFT.cs" />
+    <Compile Include="WinAPI\User32\Interop.MIIM.cs" />
+    <Compile Include="WinAPI\User32\Interop.MINMAXINFO.cs" />
+    <Compile Include="WinAPI\User32\Interop.MK.cs" />
+    <Compile Include="WinAPI\User32\Interop.MONITOR.cs" />
+    <Compile Include="WinAPI\User32\Interop.MONITORINFOEXW.cs" />
+    <Compile Include="WinAPI\User32\Interop.MONITORINFOF.cs" />
+    <Compile Include="WinAPI\User32\Interop.MOUSEEVENTF.cs" />
+    <Compile Include="WinAPI\User32\Interop.MOUSEHOOKSTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.MOUSEINPUT.cs" />
+    <Compile Include="WinAPI\User32\Interop.MSG.cs" />
+    <Compile Include="WinAPI\User32\Interop.MWMO.cs" />
+    <Compile Include="WinAPI\User32\Interop.NFR.cs" />
+    <Compile Include="WinAPI\User32\Interop.NMHDR.cs" />
+    <Compile Include="WinAPI\User32\Interop.NONCLIENTMETRICSW.cs" />
+    <Compile Include="WinAPI\User32\Interop.OBJID.cs" />
+    <Compile Include="WinAPI\User32\Interop.ODA.cs" />
+    <Compile Include="WinAPI\User32\Interop.ODS.cs" />
+    <Compile Include="WinAPI\User32\Interop.ODT.cs" />
+    <Compile Include="WinAPI\User32\Interop.PAINTSTRUCT.cs" />
+    <Compile Include="WinAPI\User32\Interop.PANOSE.cs" />
+    <Compile Include="WinAPI\User32\Interop.PRF.cs" />
+    <Compile Include="WinAPI\User32\Interop.QS.cs" />
+    <Compile Include="WinAPI\User32\Interop.RedrawWindow.cs" />
+    <Compile Include="WinAPI\User32\Interop.SB.cs" />
+    <Compile Include="WinAPI\User32\Interop.SBH.cs" />
+    <Compile Include="WinAPI\User32\Interop.SBS.cs" />
+    <Compile Include="WinAPI\User32\Interop.SBV.cs" />
+    <Compile Include="WinAPI\User32\Interop.SC.cs" />
+    <Compile Include="WinAPI\User32\Interop.SCROLLINFO.cs" />
+    <Compile Include="WinAPI\User32\Interop.ScrollSW.cs" />
+    <Compile Include="WinAPI\User32\Interop.SetProcessDpiAwarenessContext.cs" />
+    <Compile Include="WinAPI\User32\Interop.SIF.cs" />
+    <Compile Include="WinAPI\User32\Interop.SPI.cs" />
+    <Compile Include="WinAPI\User32\Interop.SS.cs" />
+    <Compile Include="WinAPI\User32\Interop.SW.cs" />
+    <Compile Include="WinAPI\User32\Interop.SWP.cs" />
+    <Compile Include="WinAPI\User32\Interop.TME.cs" />
+    <Compile Include="WinAPI\User32\Interop.UIS.cs" />
+    <Compile Include="WinAPI\User32\Interop.UISF.cs" />
+    <Compile Include="WinAPI\User32\Interop.UOI.cs" />
+    <Compile Include="WinAPI\User32\Interop.USEROBJECTFLAGS.cs" />
+    <Compile Include="WinAPI\User32\Interop.VK.cs" />
+    <Compile Include="WinAPI\User32\Interop.WA.cs" />
+    <Compile Include="WinAPI\User32\Interop.WH.cs" />
+    <Compile Include="WinAPI\User32\Interop.WINDOWPLACEMENT.cs" />
+    <Compile Include="WinAPI\User32\Interop.WINDOWPOS.cs" />
+    <Compile Include="WinAPI\User32\Interop.WINDOW_SIZE.cs" />
+    <Compile Include="WinAPI\User32\Interop.WM.cs" />
+    <Compile Include="WinAPI\User32\Interop.WNDCLASS.cs" />
+    <Compile Include="WinAPI\User32\Interop.WPF.cs" />
+    <Compile Include="WinAPI\User32\Interop.WS.cs" />
+    <Compile Include="WinAPI\User32\Interop.WSF.cs" />
+    <Compile Include="WinAPI\User32\Interop.WS_EX.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Inherits\SplitButton.resx">
@@ -158,6 +340,8 @@
       <DependentUpon>CtrlFrontHeaderLabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Zerglrisk.pfx" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -47,6 +47,15 @@ namespace Example
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tp_TextBox = new System.Windows.Forms.TabPage();
+            this.tp_CheckBox = new System.Windows.Forms.TabPage();
+            this.tp_Button = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tp_Label = new System.Windows.Forms.TabPage();
+            this.tp_DateTimeInput = new System.Windows.Forms.TabPage();
+            this.tp_ComboBox = new System.Windows.Forms.TabPage();
+            this.tp_ListView = new System.Windows.Forms.TabPage();
+            this.lbl_checkedListView = new System.Windows.Forms.Label();
+            this.tp_DataGridView = new System.Windows.Forms.TabPage();
             this.textBox2 = new Winform_Custom_Controls.Inherits.TextBox();
             this.cTextBox1 = new Winform_Custom_Controls.Inherits.CTextBox();
             this.textBox5 = new Winform_Custom_Controls.Inherits.TextBox();
@@ -55,10 +64,8 @@ namespace Example
             this.textBox7 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox9 = new Winform_Custom_Controls.Inherits.TextBox();
             this.textBox8 = new Winform_Custom_Controls.Inherits.TextBox();
-            this.tp_CheckBox = new System.Windows.Forms.TabPage();
             this._textCheckBox1 = new Winform_Custom_Controls.UserControls.CtrlTextCheckBox();
             this.threeWayCheckBox1 = new Winform_Custom_Controls.UserControls.ThreeWayCheckBox();
-            this.tp_Button = new System.Windows.Forms.TabPage();
             this.flatButton1 = new Winform_Custom_Controls.Inherits.FlatButton();
             this.usrButtonTest1 = new Winform_Custom_Controls.Inherits.usrButtonTest();
             this.splitButton1 = new Winform_Custom_Controls.Inherits.SplitButton();
@@ -68,29 +75,24 @@ namespace Example
             this.colorizeButtonTest1 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.colorizeButtonTest2 = new Winform_Custom_Controls.Inherits.ColorizeButton();
             this.imageTabButton1 = new Winform_Custom_Controls.UserControls.CtrlImageTabButton();
-            this.tp_Label = new System.Windows.Forms.TabPage();
             this.ContentLabel1 = new Winform_Custom_Controls.Inherits.ContentLabel();
             this.ContentLabel2 = new Winform_Custom_Controls.Inherits.ContentLabel();
-            this.tp_DateTimeInput = new System.Windows.Forms.TabPage();
             this.dateTimePicker1 = new Winform_Custom_Controls.Inherits.DateTimePicker();
-            this.tp_ComboBox = new System.Windows.Forms.TabPage();
-            this.tp_ListView = new System.Windows.Forms.TabPage();
-            this.lbl_checkedListView = new System.Windows.Forms.Label();
             this.checkBoxListView1 = new Winform_Custom_Controls.Inherits.CheckBoxListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tp_DataGridView = new System.Windows.Forms.TabPage();
+            this.textBox11 = new Winform_Custom_Controls.Inherits.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tp_TextBox.SuspendLayout();
             this.tp_CheckBox.SuspendLayout();
             this.tp_Button.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             this.tp_Label.SuspendLayout();
             this.tp_DateTimeInput.SuspendLayout();
             this.tp_ComboBox.SuspendLayout();
             this.tp_ListView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // checkBox1
@@ -232,6 +234,7 @@ namespace Example
             // 
             // tp_TextBox
             // 
+            this.tp_TextBox.Controls.Add(this.textBox11);
             this.tp_TextBox.Controls.Add(this.label1);
             this.tp_TextBox.Controls.Add(this.textBox1);
             this.tp_TextBox.Controls.Add(this.textBox2);
@@ -252,6 +255,110 @@ namespace Example
             this.tp_TextBox.TabIndex = 0;
             this.tp_TextBox.Text = "TextBox";
             this.tp_TextBox.UseVisualStyleBackColor = true;
+            // 
+            // tp_CheckBox
+            // 
+            this.tp_CheckBox.Controls.Add(this.checkBox1);
+            this.tp_CheckBox.Controls.Add(this._textCheckBox1);
+            this.tp_CheckBox.Controls.Add(this.threeWayCheckBox1);
+            this.tp_CheckBox.Location = new System.Drawing.Point(4, 22);
+            this.tp_CheckBox.Name = "tp_CheckBox";
+            this.tp_CheckBox.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_CheckBox.Size = new System.Drawing.Size(792, 424);
+            this.tp_CheckBox.TabIndex = 1;
+            this.tp_CheckBox.Text = "CheckBox";
+            this.tp_CheckBox.UseVisualStyleBackColor = true;
+            // 
+            // tp_Button
+            // 
+            this.tp_Button.Controls.Add(this.label4);
+            this.tp_Button.Controls.Add(this.button1);
+            this.tp_Button.Controls.Add(this.button2);
+            this.tp_Button.Controls.Add(this.flatButton1);
+            this.tp_Button.Controls.Add(this.usrButtonTest1);
+            this.tp_Button.Controls.Add(this.splitButton1);
+            this.tp_Button.Controls.Add(this.colorizeButton1);
+            this.tp_Button.Controls.Add(this.imageButton1);
+            this.tp_Button.Controls.Add(this.tabButton1);
+            this.tp_Button.Controls.Add(this.colorizeButtonTest1);
+            this.tp_Button.Controls.Add(this.colorizeButtonTest2);
+            this.tp_Button.Controls.Add(this.imageTabButton1);
+            this.tp_Button.Location = new System.Drawing.Point(4, 22);
+            this.tp_Button.Name = "tp_Button";
+            this.tp_Button.Size = new System.Drawing.Size(792, 424);
+            this.tp_Button.TabIndex = 2;
+            this.tp_Button.Text = "Button";
+            this.tp_Button.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(293, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(444, 12);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "클릭한상태로 밖에 나갔다가 클릭 떼고 다시 마우스 hover하면 클릭한 색으로나옴";
+            // 
+            // tp_Label
+            // 
+            this.tp_Label.Controls.Add(this.label3);
+            this.tp_Label.Controls.Add(this.ContentLabel1);
+            this.tp_Label.Controls.Add(this.ContentLabel2);
+            this.tp_Label.Location = new System.Drawing.Point(4, 22);
+            this.tp_Label.Name = "tp_Label";
+            this.tp_Label.Size = new System.Drawing.Size(792, 424);
+            this.tp_Label.TabIndex = 3;
+            this.tp_Label.Text = "Label";
+            this.tp_Label.UseVisualStyleBackColor = true;
+            // 
+            // tp_DateTimeInput
+            // 
+            this.tp_DateTimeInput.Controls.Add(this.dateTimePicker1);
+            this.tp_DateTimeInput.Controls.Add(this.dateTimePicker2);
+            this.tp_DateTimeInput.Location = new System.Drawing.Point(4, 22);
+            this.tp_DateTimeInput.Name = "tp_DateTimeInput";
+            this.tp_DateTimeInput.Size = new System.Drawing.Size(792, 424);
+            this.tp_DateTimeInput.TabIndex = 4;
+            this.tp_DateTimeInput.Text = "DateTimeInput";
+            this.tp_DateTimeInput.UseVisualStyleBackColor = true;
+            // 
+            // tp_ComboBox
+            // 
+            this.tp_ComboBox.Controls.Add(this.comboBox1);
+            this.tp_ComboBox.Location = new System.Drawing.Point(4, 22);
+            this.tp_ComboBox.Name = "tp_ComboBox";
+            this.tp_ComboBox.Size = new System.Drawing.Size(792, 424);
+            this.tp_ComboBox.TabIndex = 5;
+            this.tp_ComboBox.Text = "ComboBox";
+            this.tp_ComboBox.UseVisualStyleBackColor = true;
+            // 
+            // tp_ListView
+            // 
+            this.tp_ListView.Controls.Add(this.lbl_checkedListView);
+            this.tp_ListView.Controls.Add(this.checkBoxListView1);
+            this.tp_ListView.Location = new System.Drawing.Point(4, 22);
+            this.tp_ListView.Name = "tp_ListView";
+            this.tp_ListView.Size = new System.Drawing.Size(792, 424);
+            this.tp_ListView.TabIndex = 6;
+            this.tp_ListView.Text = "ListView";
+            this.tp_ListView.UseVisualStyleBackColor = true;
+            // 
+            // lbl_checkedListView
+            // 
+            this.lbl_checkedListView.AutoSize = true;
+            this.lbl_checkedListView.Location = new System.Drawing.Point(8, 179);
+            this.lbl_checkedListView.Name = "lbl_checkedListView";
+            this.lbl_checkedListView.Size = new System.Drawing.Size(0, 12);
+            this.lbl_checkedListView.TabIndex = 32;
+            // 
+            // tp_DataGridView
+            // 
+            this.tp_DataGridView.Location = new System.Drawing.Point(4, 22);
+            this.tp_DataGridView.Name = "tp_DataGridView";
+            this.tp_DataGridView.Size = new System.Drawing.Size(792, 424);
+            this.tp_DataGridView.TabIndex = 7;
+            this.tp_DataGridView.Text = "DataGridView";
+            this.tp_DataGridView.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -341,19 +448,6 @@ namespace Example
             this.textBox8.TabIndex = 22;
             this.textBox8.Text = "Disabled 2";
             // 
-            // tp_CheckBox
-            // 
-            this.tp_CheckBox.Controls.Add(this.checkBox1);
-            this.tp_CheckBox.Controls.Add(this._textCheckBox1);
-            this.tp_CheckBox.Controls.Add(this.threeWayCheckBox1);
-            this.tp_CheckBox.Location = new System.Drawing.Point(4, 22);
-            this.tp_CheckBox.Name = "tp_CheckBox";
-            this.tp_CheckBox.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_CheckBox.Size = new System.Drawing.Size(792, 424);
-            this.tp_CheckBox.TabIndex = 1;
-            this.tp_CheckBox.Text = "CheckBox";
-            this.tp_CheckBox.UseVisualStyleBackColor = true;
-            // 
             // _textCheckBox1
             // 
             this._textCheckBox1.AutoIncreaseSize = true;
@@ -382,26 +476,6 @@ namespace Example
             this.threeWayCheckBox1.Text = "Yes";
             this.threeWayCheckBox1.ThirdState = "None";
             this.threeWayCheckBox1.Value = 1;
-            // 
-            // tp_Button
-            // 
-            this.tp_Button.Controls.Add(this.button1);
-            this.tp_Button.Controls.Add(this.button2);
-            this.tp_Button.Controls.Add(this.flatButton1);
-            this.tp_Button.Controls.Add(this.usrButtonTest1);
-            this.tp_Button.Controls.Add(this.splitButton1);
-            this.tp_Button.Controls.Add(this.colorizeButton1);
-            this.tp_Button.Controls.Add(this.imageButton1);
-            this.tp_Button.Controls.Add(this.tabButton1);
-            this.tp_Button.Controls.Add(this.colorizeButtonTest1);
-            this.tp_Button.Controls.Add(this.colorizeButtonTest2);
-            this.tp_Button.Controls.Add(this.imageTabButton1);
-            this.tp_Button.Location = new System.Drawing.Point(4, 22);
-            this.tp_Button.Name = "tp_Button";
-            this.tp_Button.Size = new System.Drawing.Size(792, 424);
-            this.tp_Button.TabIndex = 2;
-            this.tp_Button.Text = "Button";
-            this.tp_Button.UseVisualStyleBackColor = true;
             // 
             // flatButton1
             // 
@@ -512,18 +586,6 @@ namespace Example
             this.imageTabButton1.TabIndex = 11;
             this.imageTabButton1.Title = "";
             // 
-            // tp_Label
-            // 
-            this.tp_Label.Controls.Add(this.label3);
-            this.tp_Label.Controls.Add(this.ContentLabel1);
-            this.tp_Label.Controls.Add(this.ContentLabel2);
-            this.tp_Label.Location = new System.Drawing.Point(4, 22);
-            this.tp_Label.Name = "tp_Label";
-            this.tp_Label.Size = new System.Drawing.Size(792, 424);
-            this.tp_Label.TabIndex = 3;
-            this.tp_Label.Text = "Label";
-            this.tp_Label.UseVisualStyleBackColor = true;
-            // 
             // ContentLabel1
             // 
             this.ContentLabel1.Font = new System.Drawing.Font("Gulim", 13F);
@@ -545,52 +607,12 @@ namespace Example
             this.ContentLabel2.TabIndex = 30;
             this.ContentLabel2.Text = "ContentLabel15555555555 ";
             // 
-            // tp_DateTimeInput
-            // 
-            this.tp_DateTimeInput.Controls.Add(this.dateTimePicker1);
-            this.tp_DateTimeInput.Controls.Add(this.dateTimePicker2);
-            this.tp_DateTimeInput.Location = new System.Drawing.Point(4, 22);
-            this.tp_DateTimeInput.Name = "tp_DateTimeInput";
-            this.tp_DateTimeInput.Size = new System.Drawing.Size(792, 424);
-            this.tp_DateTimeInput.TabIndex = 4;
-            this.tp_DateTimeInput.Text = "DateTimeInput";
-            this.tp_DateTimeInput.UseVisualStyleBackColor = true;
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(16, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 21);
             this.dateTimePicker1.TabIndex = 13;
-            // 
-            // tp_ComboBox
-            // 
-            this.tp_ComboBox.Controls.Add(this.comboBox1);
-            this.tp_ComboBox.Location = new System.Drawing.Point(4, 22);
-            this.tp_ComboBox.Name = "tp_ComboBox";
-            this.tp_ComboBox.Size = new System.Drawing.Size(792, 424);
-            this.tp_ComboBox.TabIndex = 5;
-            this.tp_ComboBox.Text = "ComboBox";
-            this.tp_ComboBox.UseVisualStyleBackColor = true;
-            // 
-            // tp_ListView
-            // 
-            this.tp_ListView.Controls.Add(this.lbl_checkedListView);
-            this.tp_ListView.Controls.Add(this.checkBoxListView1);
-            this.tp_ListView.Location = new System.Drawing.Point(4, 22);
-            this.tp_ListView.Name = "tp_ListView";
-            this.tp_ListView.Size = new System.Drawing.Size(792, 424);
-            this.tp_ListView.TabIndex = 6;
-            this.tp_ListView.Text = "ListView";
-            this.tp_ListView.UseVisualStyleBackColor = true;
-            // 
-            // lbl_checkedListView
-            // 
-            this.lbl_checkedListView.AutoSize = true;
-            this.lbl_checkedListView.Location = new System.Drawing.Point(8, 179);
-            this.lbl_checkedListView.Name = "lbl_checkedListView";
-            this.lbl_checkedListView.Size = new System.Drawing.Size(0, 12);
-            this.lbl_checkedListView.TabIndex = 32;
             // 
             // checkBoxListView1
             // 
@@ -625,14 +647,15 @@ namespace Example
             // 
             this.columnHeader3.Text = "col2";
             // 
-            // tp_DataGridView
+            // textBox11
             // 
-            this.tp_DataGridView.Location = new System.Drawing.Point(4, 22);
-            this.tp_DataGridView.Name = "tp_DataGridView";
-            this.tp_DataGridView.Size = new System.Drawing.Size(792, 424);
-            this.tp_DataGridView.TabIndex = 7;
-            this.tp_DataGridView.Text = "DataGridView";
-            this.tp_DataGridView.UseVisualStyleBackColor = true;
+            this.textBox11.BackColor = System.Drawing.SystemColors.Window;
+            this.textBox11.BorderFocusColor = System.Drawing.Color.Maroon;
+            this.textBox11.Location = new System.Drawing.Point(114, 151);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 21);
+            this.textBox11.TabIndex = 27;
+            this.textBox11.TextMode = Winform_Custom_Controls.enums.TextMode.Currency;
             // 
             // Form1
             // 
@@ -649,13 +672,14 @@ namespace Example
             this.tp_CheckBox.ResumeLayout(false);
             this.tp_CheckBox.PerformLayout();
             this.tp_Button.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).EndInit();
+            this.tp_Button.PerformLayout();
             this.tp_Label.ResumeLayout(false);
             this.tp_Label.PerformLayout();
             this.tp_DateTimeInput.ResumeLayout(false);
             this.tp_ComboBox.ResumeLayout(false);
             this.tp_ListView.ResumeLayout(false);
             this.tp_ListView.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -712,6 +736,8 @@ namespace Example
         private System.Windows.Forms.TabPage tp_ListView;
         private System.Windows.Forms.TabPage tp_DataGridView;
         private System.Windows.Forms.Label lbl_checkedListView;
+        private System.Windows.Forms.Label label4;
+        private TextBox textBox11;
     }
 }
 

@@ -253,6 +253,7 @@ namespace Winform_Custom_Controls.UserControls
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
+        [Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public override string Text
         {
             get => base.Text;
